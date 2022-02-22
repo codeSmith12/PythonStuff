@@ -1,0 +1,60 @@
+Calamari
+13.90
+1
+Meleny
+y
+Spring Roll
+8.90
+1
+Dylan, Melanie
+y
+Tom Yum Soup
+14.50
+3
+Dylan, Melanie, Ian
+y
+Panaeng Curry
+15.95
+1
+Meleny
+y
+Fried Rice
+15.95
+2
+Brian, Dylan
+y
+Pad Thai
+15.95
+1
+Brian
+y
+Jasmine Tea
+5
+2
+Dylan, Melanie
+y
+Sauv Blanc
+10
+1
+Meleny
+y
+Scrimshaw
+8
+1
+Ian
+y
+Pino
+11
+1
+Brian
+y
+Wellness Charge
+5.07
+1
+Brian, Dylan, Meleny, Melanie, Ian
+n
+15.44
+30
+0
+\n
+

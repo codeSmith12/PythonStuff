@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$/CWC/Friday/CastlesNCreatures" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Kivy" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/MazeGen" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/PCAP Training" vcs="Git" />
+  </component>
+</project>

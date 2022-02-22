@@ -1,0 +1,60 @@
+MainWidget:
+
+<MainWidget>:
+    BoxLayout:
+        orientation: "vertical"
+        TitleWidget:
+            size_hint: 1, None
+            size_y: "10dp"
+            #pos_hint: {"center_x": .5, "center_y": 1}
+        FoodCardScroll:
+            size_hint: 1,1
+
+<FoodCardScroll>:
+    BoxLayout:
+        orientation: "vertical"
+        spacing: 0, "10dp"
+        size_hint: 1, None
+        height: self.minimum_height
+        FoodCardWidget:
+            size_hint: 1, None
+            # height: self.minimum_height
+            size_y: "60dp"
+
+
+<FoodCardWidget>:
+    cols:2
+
+    Label:
+        text: "Item"
+        color: 0,0,0,1
+        canvas:
+            Color:
+                rgba: .8,.8,.8,1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+    Button:
+        text: "Enter name here"
+    Label:
+        text: "Cost"
+    Button:
+        text: "Enter cost here"
+    Label:
+        text: "Amount"
+    Button:
+        text: "Enter amount here"
+    Label:
+        text: "Who"
+    Button:
+        text: "Enter people here"
+
+<TitleWidget>:
+    BoxLayout:
+        orientation: "horizontal"
+        Label:
+            text:"Split it"
+        Button:
+            text: "Done"
+            size_hint: None, 1
+            size_x: "20dp"
