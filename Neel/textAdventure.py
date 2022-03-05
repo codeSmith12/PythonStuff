@@ -100,7 +100,9 @@ You can see this barn is in disrepair, however, something is oddly familiar abou
 The loud footsteps of the encroaching monster become closer and closer. You choose to:
 
 A) Hide behind the barn
-B) Hide inside the barn""")
+B) Hide inside the barn
+
+""")
     barn = input()
 
     if barn.upper() == "A":
@@ -113,10 +115,10 @@ B) Hide inside the barn""")
 def hideBehindBarn():
     scrollingText("""
 You scurry to the back of the barn and see some rusty farming equiptment.
-You hide underneath an old tracker that looks as if it hasn't been used in decades.
+You hide underneath an old tractor that looks as if it hasn't been used in decades.
 
 The monster stomps around you, sniffing the air. You hear a crunch and the groan of metal as the collassal figure
-picks up the tracker you're hiding under. Effortly it tosses the hunk of metal to the side and grabs you.
+picks up the tractor you're hiding under. Effortly it tosses the hunk of metal to the side and grabs you.
 You feel your insides begin to burst as the giant squeezes you. You hear popping sounds as everything turns black.
 The next thing you see is fire surrounding you and nothing but crimson. You have died.""")
 
@@ -583,8 +585,8 @@ def main():
     if scrollInput.lower() == "y" or scrollInput.lower() == "yes":
         scroll = True
 
-    courtHouse()
-    # intro()
+    # courtHouse()
+    intro()
 
 
 main()
