@@ -3,6 +3,8 @@
 from tkinter import *
 import time
 
+
+# Note: Maybe place line down the middle to simulate a pong table
 # NOTE: Need to increase speed to make bot able to lose
 class Ball:
     def __init__(self):
@@ -38,13 +40,11 @@ class Ball:
             self.y = -self.y
         if pos[2] > WIDTH:
             playerScore += 1
-            print("Player score:", playerScore)
             player.increaseScore()
             self.resetPosition()
         if pos[0] < 0: # Do the rest for the bot
             botScore += 1
             opponent.increaseScore()
-            print("Bot score:", botScore)
             self.resetPosition()
 
     def getCoords(self):
@@ -57,27 +57,27 @@ class Ball:
         self.x = -self.x # Positive to send the ball towards the bot at first
 
 class Paddle:
-    NUM_PADDLE=0 # Variable held by the class itself...
+    NUM_PADDLE=0 #  Keeps track of which paddle we are creating
     def __init__(self):
-        self.y = 0 # Variable that controls direction of motion
+        self.y = 0 # Variable that controls direction of vertical motion
         self.bot = False
-        self.score = StringVar()
-        self.score.set(0)
-
-        if Paddle.NUM_PADDLE == 0:
+        self.score = 0 # Changed to a normal int because StringVar became unnecessary when we wanted to update the scoreLabel
+        if Paddle.NUM_PADDLE == 0: # Create the human paddle
             self.id = canvas.create_rectangle(WIDTH/26, HEIGHT/2 - PADDLEHEIGHT/2, WIDTH/26 + PADDLEWIDTH, HEIGHT/2 + PADDLEHEIGHT/2, fill="white")
-            self.scoreLabel = Label(window, fg="white", bg="black", textvariable = self.score)
-            self.scoreLabel.pack()
+            self.scoreLabel = canvas.create_text(WIDTH/4, HEIGHT/20, text=self.score, fill="white", font="Helvetica 30 bold") # Changed Label to just text placed onto the canvas
             window.bind("<KeyPress-Down>", self.moveDown)
             window.bind("<KeyPress-Up>", self.moveUp)
-
             Paddle.NUM_PADDLE += 1
-        else:
+        else: # Create the bot paddle
+            self.scoreLabel = canvas.create_text(WIDTH*3/4, HEIGHT/20, text=self.score, fill="white", font="Helvetica 30 bold") # Changed Label to just text placed onto the canvas
             self.id = canvas.create_rectangle(WIDTH*25/26 - PADDLEWIDTH, HEIGHT/2 - PADDLEHEIGHT/2, WIDTH*25/26, HEIGHT/2 + PADDLEHEIGHT/2, fill="white")
             self.bot = True
 
     def increaseScore(self):
-        self.score.set(int(self.score.get()) + 1)
+        # Increase score variable
+        self.score += 1
+        # Change text on canvas to updated value
+        canvas.itemconfig(self.scoreLabel, text=self.score)
 
     def moveDown(self,key):
         if self.bot:
