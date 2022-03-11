@@ -22,7 +22,27 @@ def drawTriangle(size, color): # tell this function to expect a size parameter
 
 def drawDoor(size, color):
     pen.up()
-    pen.goto(size/3, 0) # NAILED IT !!!
+    pen.goto(size/3, 0)
+    pen.down()
+    pen.color(color)
+    # Draw the door
+    pen.begin_fill()
+    pen.left(90)
+    pen.forward(size/3)
+    pen.right(90)
+    pen.forward(size/3)
+    pen.right(90)
+    pen.forward(size/3)
+    pen.end_fill()
+
+def drawWindows(size):
+    pen.up()
+    pen.goto(size/4, size * 0.75) # Go up by 75% of size
+    pen.down()
+    for i in range(4):
+        pen.forward(size/8)
+        pen.left(90)
+
 
 
 # make a drawHouse function that does the commands below:
@@ -31,6 +51,7 @@ def drawHouse(size, baseColor, roofColor, doorColor):
     pen.goto(0, size)
     drawTriangle(size, roofColor)
     drawDoor(size, doorColor)
+    drawWindows(size)
 
 #        size, basecolor, roofclr, doorColor
 drawHouse(200, "orange", "green", "saddle brown")

@@ -41,9 +41,8 @@ def drawScene():
     pen.end_fill()
 
     # Draw stars
-    drawStars(200)
+    drawStars(50)
 
-drawScene()
 
 
 
@@ -128,7 +127,6 @@ def drawWindows(size, color):
 
 # Define a function that draws a house of any size and colors
 def drawHouse(size, baseColor, roofColor, doorColor, windowColor):
-
     # Draw base of house
     drawSquare(size, baseColor)
     # Get to top of house
@@ -142,7 +140,17 @@ def drawHouse(size, baseColor, roofColor, doorColor, windowColor):
     # # Draw the windows
     drawWindows(size, windowColor)
 
-# drawHouse(300, "purple", "blue", "saddle brown", "black")
+def placeHouses(numHouses):
+    colors = ["crimson", "teal", "saddle brown", "dark red", "yellow", "chartreuse", "medium spring green"]
+    for i in range(numHouses):
+        x = random.randint(-500,500)
+        y = random.randint(-500,-100)
+        pen.goto(x,y)
+        drawHouse(random.randint(80,140), "crimson", "teal", "saddle brown", "black")
+
+
+drawScene()
+placeHouses(5)
 
 
 
