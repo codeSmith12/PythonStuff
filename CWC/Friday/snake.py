@@ -6,8 +6,37 @@ class Snake:
         self.x = SPEED
         self.y = 0                  # x1,y1, x2,y2
         self.head = canvas.create_rectangle(WIDTH/2, HEIGHT/2, WIDTH/2 + HEADSIZE, HEIGHT/2 + HEADSIZE, fill="white", tags=('snake'))
+        tk.bind("<KeyPress-Up>", self.moveUp)
+        tk.bind("<KeyPress-Down>", self.moveDown)
+        tk.bind("<KeyPress-Left>", self.moveLeft)
+        tk.bind("<KeyPress-Right>", self.moveRight)
+
+    def moveUp(self, event):
+        if self.y != SPEED:
+            self.x = 0
+            self.y = -SPEED
+
+    def moveDown(self, event):
+        if self.y != -SPEED:
+            self.x = 0
+            self.y = SPEED
+
+    def moveRight(self, event):
+        if self.x != -SPEED:
+            self.x = SPEED
+            self.y = 0
+
+    def moveLeft(self, event):
+        if self.x != SPEED:
+            self.x = -SPEED
+            self.y = 0
+
     def updatePosition(self):
         canvas.move(self.head, self.x, self.y)
+        pos = canvas.coords(self.head)
+        print(pos)
+
+
 
 # Functions
 def drawGrid(): # 20

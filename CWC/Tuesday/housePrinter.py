@@ -146,7 +146,7 @@ def placeHouses(numHouses):
         x = random.randint(-500,500)
         y = random.randint(-500,-100)
         pen.goto(x,y)
-        drawHouse(random.randint(80,140), "crimson", "teal", "saddle brown", "black")
+        drawHouse(random.randint(80,140), random.choice(colors), random.choice(colors), random.choice(colors), random.choice(colors))
 
 
 drawScene()
