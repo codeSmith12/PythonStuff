@@ -32,23 +32,35 @@ class Snake:
             self.y = 0
 
     def updatePosition(self):
+        global gameOver
+
         canvas.move(self.head, self.x, self.y)
         pos = canvas.coords(self.head)
-        print(pos)
+        # Check if out of bounds
+        if pos[2] > WIDTH:
+            gameOver = True
+        if pos[3] > HEIGHT:
+            gameOver = True
+        if pos[0] < 0:
+            gameOver = True
+        if pos[1] < 0:
+            gameOver = True
 
-
+        # if
+        # blah
+        # if
+        # blah
 
 # Functions
 def drawGrid(): # 20
-    CELL_WIDTH = WIDTH // HEADSIZE
-    CELL_HEIGHT = HEIGHT // HEADSIZE
+    CELL_WIDTH = WIDTH // COLS
+    CELL_HEIGHT = HEIGHT // ROWS
     # Create horizontal lines
-    for i in range(CELL_HEIGHT):
+    for i in range(ROWS):
         canvas.create_line(0, CELL_HEIGHT*i, WIDTH, CELL_HEIGHT*i, fill="ivory3")
     # Create vertical lines
-    for i in range(CELL_WIDTH):
+    for i in range(COLS):
         canvas.create_line(CELL_WIDTH*i, 0, CELL_WIDTH*i, HEIGHT, fill="ivory3")
-
 
 tk = tkinter.Tk()
 tk.title("Snake")
@@ -58,6 +70,8 @@ HEIGHT = 800
 HEADSIZE = 25
 SPEED = HEADSIZE
 TICK = 0.15
+ROWS = HEIGHT//HEADSIZE # Division with rounding to nearest integer
+COLS = WIDTH//HEADSIZE
 
 # Set the size of the window
 tk.geometry(f"{WIDTH}x{HEIGHT}")
@@ -70,8 +84,11 @@ canvas.pack()
 drawGrid()
 snake = Snake()
 
+global gameOver # Variable that can be accessed from anywhere...
+gameOver = False
+
 # Keeps window open
-while True:
+while not gameOver:
     snake.updatePosition() # Moves snake
     tk.update() # Keeps window open
     time.sleep(TICK)
