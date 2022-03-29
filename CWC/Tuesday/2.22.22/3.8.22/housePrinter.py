@@ -21,20 +21,32 @@ def drawTriangle(size, color): # Function
     pen.end_fill()
 
 def drawDoor(size, color):
-         #  (x,y)
+    pen.color(color)
+    pen.up()
     pen.goto(size/3, 0)
+    pen.left(90)
+    pen.begin_fill()
+    for i in range(3):
+        pen.forward(size/3)
+        pen.right(90)
+    pen.end_fill()
+
+def drawWindows(size, color): # colon
+    pen.color(color)
+
+
 
 
 # Make the house function take in a size , base color and roof color
-def drawHouse(size, baseColor, roofColor):
+def drawHouse(size, baseColor, roofColor, doorColor, windowColor):
     drawSquare(size, baseColor) # Calling the function
     pen.left(90)
     pen.forward(size)
     pen.right(90)
     drawTriangle(size, roofColor) # Calling the function
-    drawDoor(size, "saddle brown")
+    drawDoor(size, doorColor)
 # Make sure to give the information to the function
-drawHouse(200, "crimson", "teal")
+drawHouse(200, "crimson", "teal", "saddle brown", "black")
 
 
 

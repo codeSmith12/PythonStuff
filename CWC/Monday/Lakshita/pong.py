@@ -3,7 +3,6 @@
 from tkinter import *
 import time
 
-
 # Note: Maybe place line down the middle to simulate a pong table
 # NOTE: Need to increase speed to make bot able to lose
 class Ball:

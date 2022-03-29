@@ -40,12 +40,26 @@ def drawWindows(size, color):
     pen.color(color)
     pen.goto(size/4, size * 0.75) # Go up by 75% of size
     pen.down()
-    # Makes a single pane (square)
-    # Makes 4 panes in same place -> How to fix ??
+    # Draw left window
     for i in range(4):
-        for j in range(4): # Nested forloops
+        # Makes a single pane of the window
+        for j in range(4): # Draw Square
             pen.forward(size/8)
             pen.left(90)
+        pen.left(90)
+    # Draw right window
+    pen.up()
+    pen.goto(size*3/4, size * 0.75)
+    pen.down()
+
+    for i in range(4):
+        # Makes a single pane of the window
+        for j in range(4): # Draw Square
+            pen.forward(size/8)
+            pen.left(90)
+        pen.left(90)
+
+
 
 
 # make a drawHouse function that does the commands below:
@@ -57,7 +71,9 @@ def drawHouse(size, baseColor, roofColor, doorColor):
     drawWindows(size, "black")# Function call (activate the function)
 
 #        size, basecolor, roofclr, doorColor
+
 drawHouse(200, "crimson", "teal", "saddle brown")
+
 
 
 

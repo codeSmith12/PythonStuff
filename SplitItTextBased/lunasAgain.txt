@@ -1,0 +1,55 @@
+Pozole
+13
+2
+Madison, Dylan
+y
+Salmon Tacos
+19
+1
+Meleny
+y
+Hot Chocolate
+4
+1
+Jess
+y
+Jamaica
+4
+1
+Ian
+y
+Horchata
+4
+1
+Dylan
+y
+Ron Zacapa
+14
+1
+Dylan
+y
+Margarita
+14
+6
+Brian, Meleny, Madison
+y
+Guacamole
+12
+1
+Brian, Meleny, Jess, Ian, Dylan, Madison
+y
+Camote
+7
+1
+Ian
+y
+Living Wage Surcharge
+6.09
+1
+Brian, Meleny, Jess, Ian, Dylan, Madison
+n
+16.90
+36
+0
+\n
+\n

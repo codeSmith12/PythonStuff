@@ -1,10 +1,18 @@
 # snake.py
 import tkinter, time
+from random import randint
+
+class Mouse:
+    def __init__(self):
+        self.x = randint(0, WIDTH)
+        self.y = randint(0, HEIGHT)     # x1,y1,x2,y2, color
+        self.id = canvas.create_rectangle(self.x, self.y,self.x, self.y)
 
 class Snake:
     def __init__(self):
         self.x = SPEED
         self.y = 0                  # x1,y1, x2,y2
+        self.movementLocked = False
         self.head = canvas.create_rectangle(WIDTH/2, HEIGHT/2, WIDTH/2 + HEADSIZE, HEIGHT/2 + HEADSIZE, fill="white", tags=('snake'))
         tk.bind("<KeyPress-Up>", self.moveUp)
         tk.bind("<KeyPress-Down>", self.moveDown)
@@ -12,29 +20,35 @@ class Snake:
         tk.bind("<KeyPress-Right>", self.moveRight)
 
     def moveUp(self, event):
-        if self.y != SPEED:
+        if self.y != SPEED and not self.movementLocked:
             self.x = 0
             self.y = -SPEED
+            self.movementLocked = True
 
     def moveDown(self, event):
-        if self.y != -SPEED:
+        if self.y != -SPEED and not self.movementLocked:
             self.x = 0
             self.y = SPEED
+            self.movementLocked = True
 
     def moveRight(self, event):
-        if self.x != -SPEED:
+        if self.x != -SPEED and not self.movementLocked:
             self.x = SPEED
             self.y = 0
+            self.movementLocked = True
 
     def moveLeft(self, event):
-        if self.x != SPEED:
+        if self.x != SPEED and not self.movementLocked:
             self.x = -SPEED
             self.y = 0
+            self.movementLocked = True
 
     def updatePosition(self):
         global gameOver
-
         canvas.move(self.head, self.x, self.y)
+        # After move, we may change directions again
+        self.movementLocked = False
+
         pos = canvas.coords(self.head)
         # Check if out of bounds
         if pos[2] > WIDTH:
@@ -45,11 +59,6 @@ class Snake:
             gameOver = True
         if pos[1] < 0:
             gameOver = True
-
-        # if
-        # blah
-        # if
-        # blah
 
 # Functions
 def drawGrid(): # 20

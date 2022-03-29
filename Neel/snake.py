@@ -9,7 +9,6 @@ class Mouse:
         # Next time -> Get Random Y value in range
 
 
-
 class Snake:
     def __init__(self):
         self.x = SPEED
