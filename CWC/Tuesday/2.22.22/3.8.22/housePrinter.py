@@ -30,9 +30,21 @@ def drawDoor(size, color):
         pen.forward(size/3)
         pen.right(90)
     pen.end_fill()
-
+# DEFINE WHAT WE MEAN WHEN WE SAY DRAWWINDOWS
 def drawWindows(size, color): # colon
     pen.color(color)
+    pen.up()
+    pen.goto(size/4, size*3/4)
+    pen.down()
+
+    # Repeat for each pane
+    for j in range(4):
+        # Draw a single pane
+        for i in range(4):
+            pen.forward(size/8)
+            pen.right(90)
+        pen.right(90)
+
 
 
 
@@ -45,6 +57,7 @@ def drawHouse(size, baseColor, roofColor, doorColor, windowColor):
     pen.right(90)
     drawTriangle(size, roofColor) # Calling the function
     drawDoor(size, doorColor)
+    drawWindows(size, windowColor)
 # Make sure to give the information to the function
 drawHouse(200, "crimson", "teal", "saddle brown", "black")
 

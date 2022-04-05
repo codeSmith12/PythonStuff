@@ -39,6 +39,8 @@ x = "10" # string!!!!
 #age = input("How old are you?") # input stops program and takes information, stores in variable
 # input command returns a string, we cant do math with strings
 # So we must convert string to integer using int()
+
+choice = input("ask the question you want....")
 age = int(input("How old are you?"))
 
 # Conditionals:

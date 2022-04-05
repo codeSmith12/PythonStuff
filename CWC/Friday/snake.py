@@ -6,7 +6,9 @@ class Mouse:
     def __init__(self):
         self.x = randint(0, WIDTH)
         self.y = randint(0, HEIGHT)     # x1,y1,x2,y2, color
-        self.id = canvas.create_rectangle(self.x, self.y,self.x, self.y)
+        self.x = self.x - (self.x % HEADSIZE)
+        self.y = self.y - (self.y % HEADSIZE)
+        self.id = canvas.create_rectangle(self.x, self.y, self.x + MOUSESIZE, self.y + MOUSESIZE, fill="white")
 
 class Snake:
     def __init__(self):
@@ -78,6 +80,7 @@ WIDTH = 800
 HEIGHT = 800
 HEADSIZE = 25
 SPEED = HEADSIZE
+MOUSESIZE = HEADSIZE
 TICK = 0.15
 ROWS = HEIGHT//HEADSIZE # Division with rounding to nearest integer
 COLS = WIDTH//HEADSIZE
@@ -92,6 +95,7 @@ canvas.pack()
 
 drawGrid()
 snake = Snake()
+mouse = Mouse()
 
 global gameOver # Variable that can be accessed from anywhere...
 gameOver = False
