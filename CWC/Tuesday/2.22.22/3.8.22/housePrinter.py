@@ -37,9 +37,20 @@ def drawWindows(size, color): # colon
     pen.goto(size/4, size*3/4)
     pen.down()
 
-    # Repeat for each pane
+    # Draw left window
     for j in range(4):
         # Draw a single pane
+        for i in range(4):
+            pen.forward(size/8)
+            pen.right(90)
+        pen.right(90)
+
+    # Get to right window
+    pen.up()
+    pen.goto(size*3/4, size*3/4)
+    pen.down()
+    # Draw right window
+    for j in range(4):
         for i in range(4):
             pen.forward(size/8)
             pen.right(90)

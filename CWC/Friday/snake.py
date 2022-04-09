@@ -8,7 +8,23 @@ class Mouse:
         self.y = randint(0, HEIGHT)     # x1,y1,x2,y2, color
         self.x = self.x - (self.x % HEADSIZE)
         self.y = self.y - (self.y % HEADSIZE)
+        self.hitBox = canvas.create_rectangle(self.x + MOUSESIZE/2, self.y + MOUSESIZE/2, self.x + MOUSESIZE/2, self.y + MOUSESIZE/2, fill="white")
         self.id = canvas.create_rectangle(self.x, self.y, self.x + MOUSESIZE, self.y + MOUSESIZE, fill="white")
+
+    def respawnMouse(self):
+        self.x = randint(0, WIDTH)
+        self.y = randint(0, HEIGHT)     # x1,y1,x2,y2, color
+        self.x = self.x - (self.x % HEADSIZE)
+        self.y = self.y - (self.y % HEADSIZE)
+        canvas.moveto(self.hitBox, self.x + MOUSESIZE/2, self.y+MOUSESIZE/2)
+        canvas.moveto(self.id, self.x, self.y)
+
+    def checkIfTouching(self, snakePos):
+        pos = canvas.coords(self.hitBox)
+        # A list of every canvas object that overlaps with the mouse
+        overlap = canvas.find_overlapping(pos[0],pos[1],pos[2],pos[3])
+        if 1 in overlap:
+            self.respawnMouse()
 
 class Snake:
     def __init__(self):
@@ -93,8 +109,9 @@ canvas = tkinter.Canvas(tk, width=WIDTH, height=HEIGHT)
 canvas.configure(bg="black")
 canvas.pack()
 
-drawGrid()
+# Create the snake first so it's id is 1, easier for checking if touching mouse.
 snake = Snake()
+drawGrid()
 mouse = Mouse()
 
 global gameOver # Variable that can be accessed from anywhere...
@@ -103,5 +120,6 @@ gameOver = False
 # Keeps window open
 while not gameOver:
     snake.updatePosition() # Moves snake
+    mouse.checkIfTouching(canvas.coords(snake.head))
     tk.update() # Keeps window open
     time.sleep(TICK)
