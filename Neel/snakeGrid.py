@@ -26,7 +26,7 @@ class Mouse:
         # print(pos, snakePos)
         # tag = canvas.gettags(snake)
         overlap = canvas.find_overlapping(pos[0],pos[1],pos[2],pos[3])
-        if 65 in overlap:
+        if 1 in overlap:
             self.respawnMouse()
             snake.eatMouse()
 
@@ -61,6 +61,10 @@ class Snake:
                 canvas.moveto(self.hitBoxes[i], self.prevPos[i][0]+HEADSIZE//2, self.prevPos[i][1]+HEADSIZE//2)
                 canvas.moveto(self.bodyParts[i], self.prevPos[i][0], self.prevPos[i][1])
 
+        # If a body hitbox is enclosed within the head, GG
+        if len(canvas.find_enclosed(pos[0],pos[1],pos[2],pos[3])) > 1:
+            gameOver = True
+
         self.movementLocked = False
         if pos[0] < 0:
             gameOver = True
@@ -71,8 +75,6 @@ class Snake:
         elif pos[3] >= HEIGHT:
             gameOver = True
 
-        # If a body hitbox is enclosed within the head, GG
-        print(canvas.find_enclosed(pos[0],pos[1],pos[2],pos[3]))
     def moveUp(self,key):
         if self.y != SPEED and not self.movementLocked:
             self.y = -SPEED
@@ -118,7 +120,7 @@ def drawGrid():
         canvas.create_line(i*cellWidth, 0, i*cellWidth, HEIGHT, fill="ivory3")
 
 tk = Tk()
-
+tk.title("Snake")
 WIDTH=800
 HEIGHT=800
 HEADSIZE=25
@@ -138,9 +140,9 @@ tk.configure(bg="black")
 canvas = Canvas(tk, width=WIDTH, height=HEIGHT, bg="black")
 canvas.pack()
 
+snake = Snake()
 drawGrid()
 
-snake = Snake()
 
 global gameOver
 gameOver = False

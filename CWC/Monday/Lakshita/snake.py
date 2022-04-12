@@ -1,5 +1,34 @@
 from tkinter import *
 import time
+from random import randint
+
+
+class Apple:
+    def __init__(self):
+        self.x = randint(0, WIDTH - HEADSIZE)
+        self.y = randint(0, HEIGHT - HEADSIZE)
+        self.x = self.x - self.x % HEADSIZE
+        self.y = self.y - self.y % HEADSIZE
+        self.id = canvas.create_oval(self.x, self.y, self.x + HEADSIZE, self.y+HEADSIZE, fill="red")
+        self.checkIfTouching()
+
+    def respawnApple(self):
+        self.x = randint(0, WIDTH - HEADSIZE)
+        self.y = randint(0, HEIGHT - HEADSIZE)
+        self.x = self.x - self.x % HEADSIZE
+        self.y = self.y - self.y % HEADSIZE
+        canvas.moveto(self.id, self.x, self.y)
+
+
+    def checkIfTouching(self):
+        pos = canvas.coords(self.id) # Get the position of the apple
+        overLapping = canvas.find_overlapping(pos[0],pos[1],pos[2],pos[3])
+
+        # if the snake is in the apples coordinate
+        if 1 in overLapping:
+            self.respawnApple()
+
+
 
 class Snake:
     def __init__(self):
@@ -89,9 +118,9 @@ tk.configure(width=WIDTH, height=HEIGHT)
 canvas = Canvas(tk, width=WIDTH, height=HEIGHT, bg="black")
 canvas.pack()
 
-drawGrid()
-
 snake = Snake()
+drawGrid()
+apple = Apple()
 
 global gameOver
 gameOver = False
@@ -99,4 +128,5 @@ gameOver = False
 while not gameOver:
     tk.update() # keeps the window open
     snake.updatePosition() # Makes the snake move
+    apple.checkIfTouching()
     time.sleep(TICK)
