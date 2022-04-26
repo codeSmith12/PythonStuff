@@ -18,6 +18,11 @@ class Rat:
         self.y = self.y - (self.y % HEADSIZE)
         canvas.moveto(self.hitBox, self.x+MOUSESIZE/2, self.y+MOUSESIZE/2)
         canvas.moveto(self.rat, self.x, self.y)
+        # If the mouse spawns on the snake, move to new location
+        pos = canvas.coords(self.hitBox)
+        overlap = canvas.find_enclosed(pos[0], pos[1], pos[2], pos[3])
+        if len(overlap) > 1:
+            self.respawn()
 
     def checkIfTouching(self,snakeTag):
         pos = canvas.coords(self.hitBox)
@@ -55,6 +60,9 @@ class Snake:
         for i in range(len(self.bodyParts)):
             canvas.moveto(self.hitBoxes[i], self.prevPos[i][0]+HEADSIZE//2, self.prevPos[i][1]+HEADSIZE//2)
             canvas.moveto(self.bodyParts[i], self.prevPos[i][0], self.prevPos[i][1])
+        # End the game if the snake has eaten its tail
+        if len(canvas.find_enclosed(pos[0],pos[1],pos[2],pos[3])) > 1:
+            gameOver = True
 
         self.directionLocked = False
         if pos[2] > WIDTH:
@@ -97,6 +105,8 @@ class Snake:
 
     def checkIfTouchingBody(self):
         pass
+
+
 def drawGrid():
     cellWidth = WIDTH // COLS
     cellHeight = HEIGHT // ROWS
@@ -126,13 +136,18 @@ COLS = WIDTH//HEADSIZE
 SPEED = HEADSIZE
 TICK = 0.1
 
-
 tk.configure(bg="lime")
 
 tk.geometry(f"{WIDTH}x{HEIGHT}")
 
 canvas = Canvas(tk, width=WIDTH, height=HEIGHT, bg=BACKGROUNDCOLOR)
 canvas.pack()
+
+scoreLabel = Label(canvas, text="test")
+scoreLabel.pack()
+
+
+
 # drawGrid()
 global gameOver
 

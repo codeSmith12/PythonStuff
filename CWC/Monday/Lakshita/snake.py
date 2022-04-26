@@ -9,25 +9,25 @@ class Apple:
         self.y = randint(0, HEIGHT - HEADSIZE)
         self.x = self.x - self.x % HEADSIZE
         self.y = self.y - self.y % HEADSIZE
+        self.hitBox = canvas.create_oval(self.x+HEADSIZE//2, self.y+HEADSIZE//2, self.x + HEADSIZE//2, self.y+HEADSIZE//2, fill="red")
         self.id = canvas.create_oval(self.x, self.y, self.x + HEADSIZE, self.y+HEADSIZE, fill="red")
-        self.checkIfTouching()
 
     def respawnApple(self):
         self.x = randint(0, WIDTH - HEADSIZE)
         self.y = randint(0, HEIGHT - HEADSIZE)
         self.x = self.x - self.x % HEADSIZE
         self.y = self.y - self.y % HEADSIZE
+        canvas.moveto(self.hitBox, self.x+HEADSIZE//2, self.y+HEADSIZE//2)
         canvas.moveto(self.id, self.x, self.y)
 
-
-    def checkIfTouching(self):
-        pos = canvas.coords(self.id) # Get the position of the apple
+    def checkIfTouching(self, snake):
+        pos = canvas.coords(self.hitBox) # Get the position of the apple
         overLapping = canvas.find_overlapping(pos[0],pos[1],pos[2],pos[3])
 
         # if the snake is in the apples coordinate
         if 1 in overLapping:
             self.respawnApple()
-
+            snake.eatApple()
 
 
 class Snake:
@@ -37,6 +37,11 @@ class Snake:
         # Controls a players movement...
         self.movementLocked = False
         self.head = canvas.create_oval(WIDTH//2, HEIGHT//2, WIDTH//2+HEADSIZE, HEIGHT//2+HEADSIZE, fill="ivory3")
+        self.bodyParts = []
+        self.hitBoxes = []
+        self.prevPos = []
+        self.bodyCount = 0
+
         tk.bind("<KeyPress-Up>", self.moveUp)
         tk.bind("<KeyPress-Down>", self.moveDown)
         tk.bind("<KeyPress-Left>", self.moveLeft)
@@ -66,12 +71,36 @@ class Snake:
             self.x = SPEED
             self.movementLocked = True
 
+    def eatApple(self):
+        pos = canvas.coords(self.head)
+        hitBox = canvas.create_oval(pos[0]+HEADSIZE//2,pos[1]+HEADSIZE//2, pos[0] + HEADSIZE//2,pos[1]+HEADSIZE//2, fill="ivory3")
+        bodyPart = canvas.create_oval(pos[0],pos[1],pos[2],pos[3], fill="ivory3")
+        self.bodyParts.append(bodyPart) # adds the new part to the list
+        self.hitBoxes.append(hitBox) # adds the new part to the list
+        self.bodyCount += 1
+
     def updatePosition(self):
         global gameOver
+        pos = canvas.coords(self.head)# <----
+        self.prevPos.insert(0, pos)
+        # if the list of prevPos extends past bodycount + head,
+        if len(self.prevPos) > self.bodyCount + 1:
+            del self.prevPos[-1] # Delete the last entry in the list
+        # Remove old prevPos next time <-----
         canvas.move(self.head, self.x, self.y)
+
+        for i in range(len(self.bodyParts)):
+            canvas.moveto(self.hitBoxes[i], self.prevPos[i][0]+HEADSIZE//2, self.prevPos[i][1]+HEADSIZE//2)
+            canvas.moveto(self.bodyParts[i], self.prevPos[i][0], self.prevPos[i][1])
+
         # Unlock players ability to choose new direction
         self.movementLocked = False
         pos = canvas.coords(self.head)
+
+        # Perhaps check if head is overlapping a hitbox of the body
+        if len(canvas.find_enclosed(pos[0],pos[1],pos[2],pos[3])) > 1:
+            gameOver = True
+
         # pos = [x1,y1,x2,y2]
         if pos[2] > WIDTH:
             gameOver = True
@@ -128,5 +157,5 @@ gameOver = False
 while not gameOver:
     tk.update() # keeps the window open
     snake.updatePosition() # Makes the snake move
-    apple.checkIfTouching()
+    apple.checkIfTouching(snake)
     time.sleep(TICK)

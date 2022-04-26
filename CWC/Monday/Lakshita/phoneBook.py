@@ -1,4 +1,5 @@
 import random
+
 # phonebook
 class Person:
     # init function is run automatically when creating object
@@ -41,9 +42,6 @@ class Phonebook:
                 if contact.phoneNumber == number: # this measns they called correctly
                     print(f"\nConnecting call with {contact.firstName}.")
                     contact.introduce()
-
-
-
 
 Brian = Person("Brian","Smith", 8851353)
 Dylan = Person("Dylan","Leal", 8885553)
