@@ -6,7 +6,7 @@ import time
 Notes:
 Want a menu to pop up to decide if we want to play again,
 
-Might as well add a high score label at the end game menu 
+Might as well add a high score label at the end game menu
 
 
 
@@ -159,6 +159,13 @@ TICK = 0.15
 tk.geometry(f"{WIDTH}x{HEIGHT}")
 tk.configure(bg="black")
 
+
+
+
+
+
+
+
 def main():
     global canvas, snake, mouse, scoreText, score, gameOver
     # Maybe create 1 canvas outside of main? Hmmmmm
@@ -180,10 +187,17 @@ def main():
         time.sleep(TICK)
 
     # reset the board
-    del snake, mouse
     canvas.delete("all") # is it possible for use to press a button,
+    del snake, mouse, canvas
     # that will delete the current canvas and make another? I think so..
     tk.update()
-    time.sleep(5)
+    time.sleep(5) # TODO: CALL MENU HERE
 
-main()
+def displayMenu():
+    curScoreLabel = Label(tk, text=f"Score: {256}", width=16, height=2, bg="black", fg="gold", font=("Helvetica",20, "bold")).place(relx=.5, rely=.25, anchor=CENTER)
+    highScoreLabel = Label(tk, text=f"High Score: {256}", width=16, height=2, bg="black", fg="gold", font=("Helvetica",20, "bold")).place(relx=.5, rely=.35, anchor=CENTER)
+    playBtn = Button(tk, text="Play Again", width=WIDTH//60, height=2, bg="grey", fg="white", font=("Helvetica",20, "bold"))
+    playBtn.place(relx=.5, rely=.5, anchor=CENTER)
+    tk.mainloop()
+
+displayMenu()

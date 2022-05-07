@@ -34,6 +34,7 @@ class Snake:
         self.movementLocked = False
         self.bodyParts = []
         self.prevPos = []
+        self.hitBoxes = []
         self.bodyCount = 0
         self.head = canvas.create_rectangle(WIDTH/2, HEIGHT/2, WIDTH/2 + HEADSIZE, HEIGHT/2 + HEADSIZE, fill="white", tags=('snake'))
         tk.bind("<KeyPress-Up>", self.moveUp)
@@ -43,8 +44,10 @@ class Snake:
 
     def eatMouse(self):
         pos = canvas.coords(self.head)
-        bodyPart = canvas.create_rectangle(pos[0], pos[1], pos[2], pos[3], fill="ivory3")
+        hitBox = canvas.create_rectangle(pos[0]+HEADSIZE//2, pos[1]+HEADSIZE//2,pos[0]+HEADSIZE//2, pos[1]+HEADSIZE//2, fill="ivory3")
+        bodyPart = canvas.create_rectangle(pos[0], pos[1], pos[2], pos[3], fill="ivory3", outline="")
         self.bodyParts.append(bodyPart)
+        self.hitBoxes.append(hitBox)
         self.bodyCount += 1
 
 
@@ -80,9 +83,13 @@ class Snake:
         if len(self.prevPos) > self.bodyCount+1:
             del self.prevPos[-1] # Removes the last item in a list
         for i in range(len(self.bodyParts)):
+            canvas.moveto(self.hitBoxes[i], self.prevPos[i][0]+HEADSIZE//2, self.prevPos[i][1]+HEADSIZE//2)
             canvas.moveto(self.bodyParts[i], self.prevPos[i][0], self.prevPos[i][1])
 
         canvas.move(self.head, self.x, self.y)
+
+        if len(canvas.find_enclosed(pos[0], pos[1], pos[2], pos[3])) > 1:
+            gameOver=True
 
         # After move, we may change directions again
         self.movementLocked = False

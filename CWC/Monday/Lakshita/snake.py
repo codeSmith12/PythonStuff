@@ -3,6 +3,16 @@ import time
 from random import randint
 
 
+"""
+BRAINSTORM OF WHAT TO DO AFTER SNAKE
+
+
+"""
+
+
+
+
+
 class Apple:
     def __init__(self):
         self.x = randint(0, WIDTH - HEADSIZE)
@@ -150,6 +160,8 @@ canvas.pack()
 snake = Snake()
 drawGrid()
 apple = Apple()
+
+scoreText = canvas.create_text(WIDTH//2 - HEADSIZE//2, HEADSIZE//2, text=0, font=("Helvetica",14,"bold"), fill="white")
 
 global gameOver
 gameOver = False

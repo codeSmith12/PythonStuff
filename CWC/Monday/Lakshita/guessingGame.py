@@ -8,9 +8,7 @@ pen.speed(0)
 pen.color("magenta")
 pen.shape("turtle")
 
-secret = random.randint(100, 500)
-
-# print(secret)
+secret = random.randint(50, 100)
 
 for i in range(secret):
   pen.goto(random.randint(-400,400), random.randint(-400,400))

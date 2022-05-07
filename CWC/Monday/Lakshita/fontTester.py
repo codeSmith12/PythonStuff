@@ -11,7 +11,7 @@ def populate(frame):
     listnumber = 1
     for item in fonts:
         label = "listlabel" + str(listnumber)
-        label = Label(frame,text=item,font=(item, 16)).pack()
+        label = Label(frame,text=item + str(0),font=(item, 16)).pack()
         listnumber += 1
 
 def onFrameConfigure(canvas):
