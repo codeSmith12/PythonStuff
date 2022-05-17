@@ -2,22 +2,6 @@ from tkinter import *
 from random import randint
 import time
 
-"""
-Notes:
-Want a menu to pop up to decide if we want to play again,
-
-Might as well add a high score label at the end game menu
-
-
-
-
-
-"""
-
-
-
-
-
 class Mouse:
     def __init__(self):
         self.x = randint((MOUSESIZE + HEADSIZE), (WIDTH-HEADSIZE))
@@ -48,8 +32,6 @@ class Mouse:
             snake.eatMouse()
 
 
-
-# May also need hitbox for snake, appears to exit game too early and too late sometimes..
 class Snake:
     def __init__(self):
         self.x = SPEED
@@ -78,7 +60,7 @@ class Snake:
                 canvas.moveto(self.hitBoxes[i], self.prevPos[i][0]+HEADSIZE//2, self.prevPos[i][1]+HEADSIZE//2)
                 canvas.moveto(self.bodyParts[i], self.prevPos[i][0], self.prevPos[i][1])
 
-        # If a body hitbox is enclosed within the head, GG
+        # If a body hitbox is enclosed within the head, game over
         if len(canvas.find_enclosed(pos[0],pos[1],pos[2],pos[3])) > 1:
             gameOver = True
 
@@ -118,14 +100,14 @@ class Snake:
     def getSelf(self):
         return self.head
     def eatMouse(self):
-        global score # Get the global variable
+        global score
         pos = canvas.coords(self.head)
         hitBox = canvas.create_rectangle(self.prevPos[-1][0]+HEADSIZE//2, self.prevPos[-1][1]+HEADSIZE//2, self.prevPos[-1][0]+HEADSIZE//2, self.prevPos[-1][1]+HEADSIZE//2, fill="black")
         part = canvas.create_rectangle(self.prevPos[-1][0], self.prevPos[-1][1], self.prevPos[-1][2], self.prevPos[-1][3], fill="white")
         self.hitBoxes.append(hitBox)
         self.bodyParts.append(part)
         self.bodyCount += 1
-        score+=1 # Increase score
+        score+=1
         canvas.itemconfig(scoreText, text=score) # Update scoretext with new score
 
 def drawGrid():
@@ -140,11 +122,13 @@ def drawGrid():
 
 
 
+# GAME CONSTANTS
 tk = Tk()
 tk.title("Snake")
 WIDTH=800
 HEADSIZE=25
 HEIGHT=800
+# ENSURE THE DIMENSIONS OF THE GAME WILL SCALE CORRECTLY
 assert WIDTH % HEADSIZE == 0, "Width does not divide evenly by Headsize of snake"
 assert HEIGHT % HEADSIZE == 0, "Height does not divide evenly by Headsize of snake"
 ROWS = HEIGHT//HEADSIZE
@@ -159,16 +143,19 @@ TICK = 0.15
 tk.geometry(f"{WIDTH}x{HEIGHT}")
 tk.configure(bg="black")
 
+# Controls the menu's loop
+global beginGame
+beginGame = True
 
 
-
-
-
-
+def playGame():
+    global beginGame
+    beginGame = True
 
 def main():
-    global canvas, snake, mouse, scoreText, score, gameOver
+    global canvas, snake, mouse, scoreText, score, gameOver, beginGame
     # Maybe create 1 canvas outside of main? Hmmmmm
+    beginGame = True
     canvas = Canvas(tk, width=WIDTH, height=HEIGHT, bg="black")
     canvas.pack()
 
@@ -188,16 +175,45 @@ def main():
 
     # reset the board
     canvas.delete("all") # is it possible for use to press a button,
-    del snake, mouse, canvas
+    del canvas, snake, mouse, scoreText, gameOver
     # that will delete the current canvas and make another? I think so..
     tk.update()
-    time.sleep(5) # TODO: CALL MENU HERE
+    displayMenu(score)
 
-def displayMenu():
-    curScoreLabel = Label(tk, text=f"Score: {256}", width=16, height=2, bg="black", fg="gold", font=("Helvetica",20, "bold")).place(relx=.5, rely=.25, anchor=CENTER)
-    highScoreLabel = Label(tk, text=f"High Score: {256}", width=16, height=2, bg="black", fg="gold", font=("Helvetica",20, "bold")).place(relx=.5, rely=.35, anchor=CENTER)
-    playBtn = Button(tk, text="Play Again", width=WIDTH//60, height=2, bg="grey", fg="white", font=("Helvetica",20, "bold"))
+def displayMenu(score):
+    global beginGame
+    beginGame = False
+
+    # Open file and grab the current highscore
+    scoreFile = open("score.txt", "r")
+    highScore = scoreFile.readline() # I think it gives a string back
+    # Close file immediately so we can open again for writing
+    scoreFile.close()
+
+    # If the file didnt have a highscore yet, then create a new one.
+    if len(highScore) == 0:
+        highScore = 0
+    # Check if new score is greater than our current HIGHSCORE
+    # if so set new highscore...
+    if int(highScore) < score:
+        highScore = score
+
+    # Open highscore file in write mode, and insert the new highscore into the file.
+    scoreFile = open("score.txt", "w")
+    scoreFile.write(str(highScore))
+    scoreFile.close()
+
+    curScoreLabel = Label(tk, text=f"Score: {score}", width=16, height=2, bg="black", fg="gold", font=("Helvetica",32, "bold")).place(relx=.5, rely=.25, anchor=CENTER)
+    highScoreLabel = Label(tk, text=f"High Score: {highScore}", width=16, height=2, bg="black", fg="gold", font=("Helvetica",32, "bold")).place(relx=.5, rely=.35, anchor=CENTER)
+    playBtn = Button(tk, text="Play Again", width=WIDTH//60, height=2, bg="grey", fg="black", font=("Helvetica",20, "bold"), command=playGame)
     playBtn.place(relx=.5, rely=.5, anchor=CENTER)
-    tk.mainloop()
+    while not beginGame:
+        tk.update()
+        time.sleep(.1)
+    del curScoreLabel, highScoreLabel, playBtn
+    for widget in tk.winfo_children():
+        widget.destroy()
+    tk.update()
+    main()
 
-displayMenu()
+main()
