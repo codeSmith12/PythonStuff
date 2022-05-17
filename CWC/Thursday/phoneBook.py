@@ -1,17 +1,17 @@
 class Phonebook:
     # Create a function that will make a phonebook
     def __init__(self):
-        # List that holds "Person" objects as contacts
         self.contacts = []
-        # Need to get contacts into the list somehow,
-        # This function will take a person in,
-        # and add the to our list of contacts
+
     def addContact(self, personObject):
         self.contacts.append(personObject)
+
     def displayContacts(self):
         for contact in self.contacts:
             contact.displayInfo()
 
+    def sortByFirstName(self):
+        self.contacts.sort(key=lambda x: x.firstName)
 
 
 
@@ -31,7 +31,7 @@ class Person:
 Brian = Person("Brian", "Smith", 4669221) # 'Constructor' -> Builds an object
 Andrew = Person("Andrew", "Smith", 4561111)
 Meleny = Person("Meleny", "Taylor", 8885551)
-Carolyn = Person("Meleny", "Smith", 1975246)
+Carolyn = Person("Carolyn", "Smith", 1975246)
 Ferox = Person("Ferox", "Smith", 1242069)
 
 # Make a phonebook object
@@ -42,4 +42,7 @@ phoneBook.addContact(Andrew)
 phoneBook.addContact(Meleny)
 phoneBook.addContact(Carolyn)
 phoneBook.addContact(Ferox)
+
+phoneBook.sortByFirstName()
+
 phoneBook.displayContacts()
