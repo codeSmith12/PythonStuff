@@ -1,5 +1,16 @@
 from tkinter import *
 
+"""
+TODO:
+
+Need to stop player from interacting with the board
+once a winner has been detected.
+
+^^^ Can deal with out of bounds by using try and except IndexError
+
+Replay menu
+
+"""
 
 def drawGrid():
     colWidth = WIDTH/8
@@ -13,7 +24,10 @@ def drawGrid():
             canvas.create_oval(PADX + colWidth*j, PADY+colWidth*i, PADX + CIRCLE_SIZE + colWidth*j, PADY+CIRCLE_SIZE+colWidth*i, fill=CIRCLE_COLOR)
 
 def placeMarker(event):
-    global board, playerTurn
+    global board, playerTurn, gameOver
+    # Dont place marker if game is over
+    if gameOver:
+        return
     colWidth = WIDTH/8
     # Calculate which row was clicked on using event X, convert to int for indexing later
     rowClicked = int(event.x // colWidth)
@@ -33,17 +47,18 @@ def placeMarker(event):
 
     checkWinner(board)
 
+# ROW IS NOT WORKING 100%
 def checkRows(board):
-    P1Score = 0
-    P2Score = 0
     for row in board:
+        P1Score = 0
+        P2Score = 0
         for col in row:
             if P1Score == 4:
                 print("Player 1 has won! Row")
-                return
+                return True
             elif P2Score == 4:
                 print("Player 2 has won! Row")
-                return
+                return True
 
             if col == 1:
                 P2Score = 0
@@ -51,17 +66,23 @@ def checkRows(board):
             elif col == 2:
                 P1Score = 0
                 P2Score += 1
+            elif col == 0:
+                P1Score = 0
+                P2Score = 0
+
 
 def checkCols(board):
-    displayBoard(board)
-    P1Score = 0
-    P2Score = 0
+    # displayBoard(board)
     for col in range(8):
+        P1Score = 0
+        P2Score = 0
         for row in range(8):
             if P1Score == 3:
                 print("Player 1 has won! Col")
+                return True
             elif P2Score == 3:
                 print("Player 2 has won via! Col")
+                return True
 
             if board[row][col] == 1:
                 P2Score = 0
@@ -69,20 +90,45 @@ def checkCols(board):
             elif board[row][col] == 2:
                 P1Score = 0
                 P2Score += 1
-        # Reset the counters between cols
-        P1Score=0
-        P2Score=0
+            elif board[row][col] == 0:
+                P1Score = 0
+                P2Score = 0
 
+# JESUSSSSSSSSSS
+def checkDiags(marker, board):
+    for i in range(0,4):
+        for j in range(0,3):
+            if (board[j][i]==board[j+1][i+1]==\
+                board[j+2][i+2]==board[j+3][i+3]==marker or
+                board[j+3][i]==board[j+2][i+1]==\
+                board[j+1][i+2]==board[j][i+3]==marker):
+                    game = True
+            else:
+                continue
+    # for x in range(0,4):
+    #     for y in range(0,3):
+    #         if board[x][y] == board[x+1][y+1] ==\
+    #          board[x+2][y+2] == board[x+3][y+3] == marker or\
+    #          board[y+3][x] == board[y+2][x+1] ==\
+    #          board[y+1][x+2] == marker:
+    #             print(f"Player {marker} wins diagonally")
 
-def checkDiags(board):
-    pass
 
 def checkWinner(board):
-    checkRows(board)
-    checkCols(board)
-    checkDiags(board)
+    global gameOver
+
+    gameOver = checkRows(board)
+    gameOver = checkCols(board)
+    gameOver = checkDiags(1, board)
+    # Make sure to end the function so gameOver doesnt get overridden
+    if gameOver:
+        return
+    gameOver = checkDiags(2, board)
+    if gameOver:
+        return
 
 
+# Print the grid / board for testing purposes
 def displayBoard(board):
     for row in board:
         for col in row:
@@ -90,8 +136,8 @@ def displayBoard(board):
         print("\n")
 
 # Game Constants
-WIDTH = 1200
-HEIGHT = 1200
+WIDTH = 800
+HEIGHT = 800
 PADX = WIDTH//65
 PADY = HEIGHT//65
 CIRCLE_SIZE = WIDTH//10
@@ -105,21 +151,23 @@ PLAYER2_COLOR = "red"
 global playerTurn
 playerTurn = True
 
+global gameOver
+gameOver=False
 
-
-# Board variables, 0 on board means clear, 1 is player1 and 2 is player2
+# Board is a matrix of integers representing if the slot is taken or not.
+# 0 on board means clear, 1 is player1 and 2 is player2
 global board
 board = []
 for i in range(8):
     board.append([0,0,0,0,0,0,0,0])
 
-
-
+# GUI Stuff
 tk = Tk()
 tk.title("Connect 4")
 tk.geometry(f"{WIDTH}x{HEIGHT}")
-
 canvas = Canvas(tk, width=WIDTH, height=HEIGHT, background=BACKGROUND_COLOR)
+
+# Assign placeMarker function to the left keypress
 canvas.bind("<Button-1>", placeMarker)
 canvas.pack()
 
