@@ -44,7 +44,7 @@ def placeMarker(event):
             # Flip players turn, break so only one marker is placed.
             playerTurn = not playerTurn
             break
-
+    displayBoard(board)
     checkWinner(board)
 
 # ROW IS NOT WORKING 100%
@@ -96,13 +96,14 @@ def checkCols(board):
 
 # JESUSSSSSSSSSS
 def checkDiags(marker, board):
+    print("GITTEST")
     for i in range(0,4):
         for j in range(0,3):
             if (board[j][i]==board[j+1][i+1]==\
                 board[j+2][i+2]==board[j+3][i+3]==marker or
                 board[j+3][i]==board[j+2][i+1]==\
                 board[j+1][i+2]==board[j][i+3]==marker):
-                    game = True
+                    gameOver = True
             else:
                 continue
     # for x in range(0,4):
@@ -130,10 +131,12 @@ def checkWinner(board):
 
 # Print the grid / board for testing purposes
 def displayBoard(board):
+    print("---------------")
     for row in board:
         for col in row:
             print(f"{col}", end=" ")
         print("\n")
+    print("---------------")
 
 # Game Constants
 WIDTH = 800
