@@ -1,6 +1,11 @@
 from tkinter import *
 import time
 
+class Invader:
+    def __init__(self):
+        pass
+
+
 class Ship:
     def __init__(self):
         playerLoc = [WIDTH//2-SHIPSIZE //2, HEIGHT*7//8, WIDTH//2+SHIPSIZE //2, HEIGHT*7//8, WIDTH//2, HEIGHT*7//8-SHIPSIZE ]
