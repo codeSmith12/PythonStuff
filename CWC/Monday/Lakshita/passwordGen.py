@@ -27,7 +27,27 @@ adjectives = ["red", "colorful", "prickly",
 def generatePassword():
     password = choice(adjectives).capitalize()
     password += choice(nouns).capitalize()
-    print(password)
+    password += str(randint(0,999))
+
+    if len(password) < int(spin.get()):
+        print("Password not long enough.")
+        generatePassword() # recursion
+    else:
+        # Delete anything left in the box...
+        passwordValue.delete("0.-1", END)
+        # Place the newly generated password into the text box
+        passwordValue.insert(INSERT, password)
+        # open a file for us to write the password to
+        myFile = open("passwords.txt", "a")
+
+        # Format the string with all the data we want written
+        myStr = "\n" + titleValue.get(1.0, END) + "\n" + password
+
+        # Write the string to the file
+        myFile.write(myStr)
+
+        # Close the file.
+        myFile.close()
 
 
 # CONSTANTS
