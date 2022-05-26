@@ -3,13 +3,13 @@ import turtle
 
 class GuessingGame:
     def __init__(self, min, max):
-        self.pen = turtle.Turtle()
+        # Secret game values
         self.min = min
         self.max = max
         self.secret = randint(min, max)
-        self.run = True
-        self.tries = 0
 
+        # Create and format pen / turtle stuff
+        self.pen = turtle.Turtle()
         self.pen.speed(0)
         self.pen.shape("turtle")
         self.pen.color("cyan")
@@ -17,12 +17,14 @@ class GuessingGame:
         self.pen.hideturtle()
         turtle.bgcolor("black")
 
+        # Game variables
+        self.run = True
+        self.tries = 0
 
     def displayObjects(self):
         for i in range(self.secret):
             self.pen.goto(randint(-400,400), randint(-400,400))
             self.pen.stamp()
-
 
     def playGame(self):
         self.pen.clear()
@@ -39,12 +41,6 @@ class GuessingGame:
             else:
                 print(f"You got it in {self.tries} tries.")
                 self.run = False
-
-
-
-
-
-
 
 
 
