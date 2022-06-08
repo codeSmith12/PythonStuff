@@ -101,8 +101,6 @@ class GuessingGame:
                 return self.tries
 
 
-
-
 # Run computer games
 computer = Player("Computer", 2)
 compStats = computer.playGames()
@@ -114,6 +112,5 @@ human = Player("Human", 1)
 # print both human and computer stats
 print(human.playGames())
 print(compStats)
-
 
 turtle.done()

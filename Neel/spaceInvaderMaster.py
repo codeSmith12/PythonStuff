@@ -48,7 +48,7 @@ class Ship:
         playerLoc = [WIDTH//2-SHIPSIZE //2, HEIGHT*7//8, WIDTH//2+SHIPSIZE //2, HEIGHT*7//8, WIDTH//2, HEIGHT*7//8-SHIPSIZE ]
         self.id = canvas.create_polygon(playerLoc, fill=SHIPCOLOR)
         self.bullets = []
-        self.shotDelay = 0.0
+        self.shotDelay = 0.0 # cool downs
         tk.bind("<KeyPress-Left>", self.moveLeft)
         tk.bind("<KeyPress-Right>", self.moveRight)
         tk.bind("<space>", self.shoot)
@@ -71,8 +71,9 @@ class Ship:
         for bullet in self.bullets:
             canvas.move(bullet.id, 0, -10)
             pos = canvas.coords(bullet.id)
-            # Check if touched a bullet
+            # Check if invader(?) touched a bullet
             if len(canvas.find_overlapping(pos[0],pos[1],pos[2],pos[3])) > 1 and not bullet.hit:
+                # Make sure the ship isn't the object that touched the bullet.
                 if 1 not in canvas.find_overlapping(pos[0],pos[1],pos[2],pos[3]):
                     canvas.itemconfig(bullet.id, fill="black")
                     bullet.hit=True
@@ -107,8 +108,8 @@ global gameOver
 gameOver = False
 
 invaders = []
-for i in range(3):
-    for j in range(6):
+for i in range(3): # 3 rows
+    for j in range(6): # 6 columns
         invader = Invader(20 + j*SPACEBETWEEN, 20+i*SPACEABOVE)
         invaders.append(invader)
 

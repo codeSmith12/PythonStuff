@@ -13,6 +13,15 @@ class Phonebook:
     def sortByFirstName(self):
         self.contacts.sort(key=lambda x: x.firstName)
 
+    def callContact(self):
+        number = input("Type the phone number of the contact you'd like to call: ")
+        number = int(number) # Convert the string to a number
+        # Loop through each person on our list
+        for contact in self.contacts:
+            # if the contact has the phone number we are looking for...
+            if number == contact.phoneNumber:
+                # have the contact introduce themself
+                contact.intro()
 
 
 class Person:
@@ -46,3 +55,4 @@ phoneBook.addContact(Ferox)
 phoneBook.sortByFirstName()
 
 phoneBook.displayContacts()
+phoneBook.callContact()

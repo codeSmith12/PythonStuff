@@ -59,8 +59,11 @@ class Game:
         deck = Deck()
 
         player1 = Player("Brian")
-        player2 = Player("Bob")
-        players = [player1, player2]
+        player2 = Player("Jas")
+        player3 = Player("Jerm")
+        player4 = Player("Lekha")
+        player5 = Player("Oliver")
+        players = [player1, player2, player3, player4, player5]
 
         deck.shuffleDeck()
         deck.dealCards(players)
