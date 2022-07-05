@@ -332,7 +332,7 @@ def stayOnF2():
   You scream, but no one can hear you, for you are alone with this monster. Your fight or flight response kicks in.
 
   Do you:
-  
+
   A: Fight back
   B: Try to run by
   C: Continue to shriek in terror
