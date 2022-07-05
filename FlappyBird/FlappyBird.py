@@ -114,6 +114,7 @@ class obstacle:
         c.coords(self.rectTop, self.x3, self.y3,self.x4 ,self.y4 )
         coords1 = c.coords(self.rectTop)
         coords2 = c.coords(self.rectBot)
+
         if coords1[2] < 0:
             print("Resetting location")
             # top obby
@@ -133,13 +134,6 @@ class obstacle:
 
 
         time.sleep(gameStep)
-
-
-
-
-
-
-
 
 bird1 = Bird(c, "white")
 startX = startX + 20
