@@ -15,6 +15,7 @@ Buttons aren't individually detectable if they are currently playing.
 
 
 from tkinter import *
+from tkinter import filedialog
 import time
 import pygame as pg
 
@@ -23,43 +24,54 @@ class SoundboardButton:
     CHANNELNUM = 0
     def __init__(self):
         # Refactor this once file system is working
-        print(SoundboardButton.CHANNELNUM)
-        self.fileName = r"C:\Users\bsmit\Documents\PythonStuff\SoundBoard\Later.mp3"
+        # print(SoundboardButton.CHANNELNUM)
+        self.fileName = r"/home/runner/SoundBoardWIP/coin.wav" # Fix for comp...
         self.soundFile = pg.mixer.Sound(self.fileName)
         self.channel = pg.mixer.Channel(SoundboardButton.CHANNELNUM)
         SoundboardButton.CHANNELNUM += 1
         # Strip the name of the button to the files name, with no file extension
         self.btnName = self.fileName[self.fileName.rfind("\\")+1:self.fileName.rfind(".")]
-        self.id = Button(tk, text=self.btnName, width=BTNWIDTH, height=BTNHEIGHT, command=lambda: [self.play(), test], font=btnFont)
+        self.id = Button(tk, text=self.btnName, width=BTNWIDTH, height=BTNHEIGHT, command=lambda: [self.play(), displaySettings], font=btnFont) # Why did I use a list here??
 
     def play(self):
         self.id.config(bg="green")
         self.soundFile.play()
     def turnOff(self):
-        print(self.channel.get_busy())
+        # print(self.channel.get_busy())
         if not self.channel.get_busy():
             self.id.config(bg="white")
 
     def stop(self):
         self.soundFile.stop()
 
+def displaySettings():
+    global SETTINGS_OPEN
+    if not SETTINGS_OPEN: # If a popup doesn't exist, create one, wait for it to terminate and enable the ability to pop up again
+      SETTINGS_OPEN = True
+      popup = Toplevel(tk)
+      popup.title("Settings")
+      fileName = filedialog.askopenfilename(initialdir = "/", title = "Select a File", filetypes = (("mp3 files",
+"*.mp3"),
+("wav files",
+"*.wav")))
+      tk.wait_window(popup)
+      SETTINGS_OPEN=False
+
+
 def stopSounds(btns):
     for btn in btns:
         btn.stop()
 
-
-def test():
-    print("test..???")
-
-
 # CONSTANTS, CHANGE AS YOU WISH
-BTNS_PER_ROW = 8
-NUMROWS = 2
+BTNS_PER_ROW = 4 # 8
+NUMROWS = 1 # 1
 BTNWIDTH = 5
 BTNHEIGHT= 1
 XPADDING=10
 YPADDING=30
 FONTSIZE = 20 # Button size is based on font-size as well
+global SETTINGS_OPEN # Bool so we dont open multiple settings windows.
+SETTINGS_OPEN = False
 
 # Using pygame to support playing sounds
 pg.mixer.init(44100, -16, NUMROWS * BTNS_PER_ROW, 2048) # frequency, size, channels, buffer.. attempting to increase quality
@@ -85,7 +97,7 @@ HEIGHT=((buttons[0].id.winfo_height()*NUMROWS+1)+YPADDING*2*(NUMROWS+1)) # numro
 
 stopBtn = Button(tk, text="Stop", font=btnFont, command=lambda: stopSounds(buttons), bg="red")
 stopBtn.grid(row=NUMROWS+1,columnspan=BTNS_PER_ROW)
-settingsBtn = Button(tk, text="Settings", font=btnFont)
+settingsBtn = Button(tk, text="Settings", font=btnFont, command=displaySettings)
 settingsBtn.grid(row=NUMROWS+1,column=BTNS_PER_ROW//2 + 1)
 
 tk.geometry(f"{WIDTH}x{HEIGHT}")
