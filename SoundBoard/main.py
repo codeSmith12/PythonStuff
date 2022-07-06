@@ -78,8 +78,6 @@ XPADDING=10
 YPADDING=30
 FONTSIZE = 20 # Button size is based on font-size as well
 RIGHT_CLICK = 3 # Windows uses 3, other OS may use 2 for right click
-global SETTINGS_OPEN # Bool so we dont open multiple settings windows.
-SETTINGS_OPEN = False
 
 # Using pygame to support playing sounds
 pg.mixer.init(44100, -16, NUMROWS * BTNS_PER_ROW, 2048) # frequency, size, channels, buffer.. attempting to increase quality
