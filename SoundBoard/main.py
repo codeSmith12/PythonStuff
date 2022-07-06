@@ -23,17 +23,20 @@ from functools import partial
 
 class SoundboardButton:
     CHANNELNUM = 0
-    def __init__(self, fileName="./coin.wav"):
+    def __init__(self, fileName):
         # Refactor this once file system is working
         # print(SoundboardButton.CHANNELNUM)
-        self.fileName =  fileName# Fix for comp...
-        if len(self.fileName) > 0:
-            self.soundFile = pg.mixer.Sound(self.fileName)
-            self.channel = pg.mixer.Channel(0)# 0 -> SoundBaordbutton.CHANNELNUM
+        self.fileName =  fileName
+        # if len(self.fileName) > 0:
+        self.soundFile = pg.mixer.Sound(self.fileName)
+        self.channel = pg.mixer.Channel(0)# 0 -> SoundBaordbutton.CHANNELNUM
         self.num = SoundboardButton.CHANNELNUM
         SoundboardButton.CHANNELNUM += 1
         # Strip the name of the button to the files name, with no file extension
-        self.btnName = self.fileName[self.fileName.rfind("\\")+1:self.fileName.rfind(".")]
+        if "\\" in self.fileName:
+            self.btnName = self.fileName[self.fileName.rfind("\\")+1:self.fileName.rfind(".")]
+        elif "/" in self.fileName:
+            self.btnName = self.fileName[self.fileName.rfind("/")+1:self.fileName.rfind(".")]
         self.id = Button(tk, text=self.btnName, width=BTNWIDTH, height=BTNHEIGHT, command=lambda: [self.play(), displaySettings], font=btnFont) # Why did I use a list here??
         # self.id.bind("<Button-3>", displaySettings)
     def play(self):
@@ -87,16 +90,28 @@ tk = Tk()
 tk.title("SoundBoard by codeSmith12")
 btnFont = ("Helvetica", FONTSIZE)
 
+# try to open file, exept for fun...
 # Create all the buttons depending on the constants provided.
-getSoundFiles = open("sounds.txt", "r")
 buttons = []
-for i in range(NUMROWS):
-    for j in range(BTNS_PER_ROW):
-        sound = getSoundFiles.readline().rstrip()
-        btn = SoundboardButton(sound)
-        btn.id.grid(row=i, column=j, padx=XPADDING, pady=YPADDING, sticky="W")
-        btn.id.update() # used because it updates the width and height of btn.id
-        buttons.append(btn)
+try:
+    getSoundFiles = open("sounds.txt", "r")
+    for i in range(NUMROWS):
+        for j in range(BTNS_PER_ROW):
+            sound = getSoundFiles.readline().rstrip()
+            btn = SoundboardButton(sound)
+            btn.id.grid(row=i, column=j, padx=XPADDING, pady=YPADDING, sticky="W")
+            btn.id.update() # used because it updates the width and height of btn.id
+            buttons.append(btn)
+except FileNotFoundError:
+    print("Sound file not found. Creating now.")
+    getSoundFiles = open("sounds.txt", "w")
+    for i in range(NUMROWS):
+        for j in range(BTNS_PER_ROW):
+            btn = SoundboardButton("./coin.wav")
+            btn.id.grid(row=i, column=j, padx=XPADDING, pady=YPADDING, sticky="W")
+            btn.id.update() # used because it updates the width and height of btn.id
+            buttons.append(btn)
+
 
 for btn in buttons:
     closure = partial(displaySettings, btn)
