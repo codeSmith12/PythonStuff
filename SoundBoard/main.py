@@ -23,7 +23,7 @@ from functools import partial
 
 class SoundboardButton:
     CHANNELNUM = 0
-    def __init__(self, fileName=""):
+    def __init__(self, fileName="./coin.wav"):
         # Refactor this once file system is working
         # print(SoundboardButton.CHANNELNUM)
         self.fileName =  fileName# Fix for comp...
