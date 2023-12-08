@@ -22,7 +22,7 @@ def scrollingText(text):
 
     Unreliable Narrator -> Based on Evil Within, attempt on an insane perspective..
     Can hardly guess what is real...
-    Starts of with you dying -> BUT YOU DONT KNOW !!! (6th sense)
+    Starts of with you dying -> BUT YOU DONT KNOW !!! (6th sense?)
     Start dead, but you don't know. You're looking for your daughter
     Wake up to dark voice in the forest, "you must live you must live"
     Potentially hearing monster marching but its not real.
@@ -88,7 +88,7 @@ def scrollingText(text):
 def intro():
     scrollingText("""
 "Wake up Daddy.", you hear your daughter saying softly.
-You jolt awake to find yourself in a dense forst, in the middle of a halo of mushrooms.
+You jolt awake to find yourself in a dense forest, in the middle of a halo of mushrooms.
 "Sarah, where are you!?" you call out, to no reply. The silence is so loud,
 your ears begin to ring. In a daze, you look around, trying to soak in your surroundings.
 "Where am I, for that matter?". This forest is unfamiliar, dark and foreboding.
@@ -120,7 +120,9 @@ You hide underneath an old tractor that looks as if it hasn't been used in decad
 The monster stomps around you, sniffing the air. You hear a crunch and the groan of metal as the collassal figure
 picks up the tractor you're hiding under. Effortly it tosses the hunk of metal to the side and grabs you.
 You feel your insides begin to burst as the giant squeezes you. You hear popping sounds as everything turns black.
-The next thing you see is fire surrounding you and nothing but crimson. You have died.""")
+The next thing you see is fire surrounding you and nothing but crimson. You have died.
+
+""")
 
 def hideInBarn():
     scrollingText("""
@@ -134,11 +136,13 @@ Across the room from you, you see there's a door to the outside. You look up and
 notice there's a small dark figure on the second floor. You choose to:
 
 A) Take the backdoor to outside the barn
-B) Go upstairs to the dark figure""")
+B) Go upstairs to the dark figure
+
+""")
 
     barnChoice = input()
     if barnChoice.upper() == "A":
-        pass
+        hideBehindBarn() # Added to cut lose end, reused from the choice before.
     elif barnChoice.upper() == "B":
         goUpstairsToFigure()
     else:
@@ -196,7 +200,7 @@ everything he had going for him came falling down.""")
 
 
 
-        scrollingText("""
+    scrollingText("""
 You fall to the floor and curl into a ball, wishing yourself to be anywhere but here.
 "Why is this happening to me?!" you shout.
 
@@ -206,13 +210,15 @@ the door is cracking at the seams.
 
 You choose to:
 A) Hide in the top floor of the barn
-B) Drop out of the window""")
+B) Drop out of the window
 
-        barnChoice = input()
-        if barnChoice.upper() == "A":
-            pass
-        elif barnChoice.upper() == "B":
-            candyShop()
+""")
+
+    barnChoice = input()
+    if barnChoice.upper() == "A":
+        pass
+    elif barnChoice.upper() == "B":
+        candyShop()
 
 def candyShop():
     scrollingText("""

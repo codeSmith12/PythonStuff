@@ -30,6 +30,9 @@ def drawDoor(size):
     pen.goto(size/3, 0)
     pen.down()
     pen.left(90)
+    pen.forward(size/3)
+    pen.right(90)
+    
 
 
 # Creating a triange function that can make a triangle of any size..
