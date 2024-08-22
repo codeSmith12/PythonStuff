@@ -5,7 +5,7 @@ import time, datetime
 # play(typeWriter)
 # Add typewriter sound when possible...
 global scroll # <--
-scroll = False # <--
+scroll = True # <--
 
 global eyeInjured
 eyeInjured = False
