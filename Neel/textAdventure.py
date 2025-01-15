@@ -7,6 +7,14 @@ import time, datetime
 global scroll # <--
 scroll = True # <--
 
+
+def player1_respond():
+    p1 = input()
+
+screen.onkey(player1_respond, "Enter")
+
+
+
 global eyeInjured
 eyeInjured = False
 
@@ -16,6 +24,8 @@ def scrollingText(text):
         print(text[i], end="", flush=True)
         if scroll == True: # <--
             time.sleep(.04) # <--
+
+
 
 '''
     Text based adventure, plot ideas:

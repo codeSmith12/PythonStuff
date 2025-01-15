@@ -39,17 +39,4 @@ for i in range(6):
         pen.left(10)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 turtle.done()

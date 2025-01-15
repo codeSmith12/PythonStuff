@@ -1,11 +1,11 @@
 import random, os
 clear = lambda: os.system('cls')
 # Open up files, read contents but strip new lines and white spaces
-with open("answers.txt", "r") as answersFile:
-    answers = [line.rstrip() for line in answersFile]
+# with open("answers.txt", "r") as answersFile:
+#     answers = [line.rstrip() for line in answersFile]
 
-with open("allowedWords.txt", "r") as wordFile:
-    words = [line.rstrip() for line in wordFile]
+# with open("allowedWords.txt", "r") as wordFile:
+#     words = [line.rstrip() for line in wordFile]
 
 print("""
 Welcome to a lame version of Wordle. If you guess a letter in the correct
@@ -14,7 +14,7 @@ that's in the word but is in the wrong spot, it will be uppercase.
 
 Good luck!
 """)
-
+answers = ["plank", "snake"]
 answer = random.choice(answers)
 # print(answer)
 guess = "0"

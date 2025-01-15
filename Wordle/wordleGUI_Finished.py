@@ -2,10 +2,10 @@ from tkinter import *
 from random import choice
 from functools import partial
 
-with open("answers.txt", "r") as answersFile:
+with open("Wordle/answers.txt", "r") as answersFile:
     answers = [line.rstrip() for line in answersFile]
 
-with open("allowedWords.txt", "r") as wordFile:
+with open("Wordle/allowedWords.txt", "r") as wordFile:
     words = [line.rstrip() for line in wordFile]
 
 global turn

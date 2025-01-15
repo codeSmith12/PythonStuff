@@ -41,13 +41,14 @@ class GuessingGame:
         self.secret = randint(min, max)
 
         # Create and format pen / turtle stuff
-        self.pen = turtle.Turtle()
-        self.pen.speed(0)
-        self.pen.shape("turtle")
-        self.pen.color("cyan")
-        self.pen.up()
-        self.pen.hideturtle()
-        turtle.bgcolor("black")
+        if self.type != "Computer":
+            self.pen = turtle.Turtle()
+            self.pen.speed(0)
+            self.pen.shape("turtle")
+            self.pen.color("cyan")
+            self.pen.up()
+            self.pen.hideturtle()
+            turtle.bgcolor("black")
 
         # Game variables
         self.run = True
@@ -97,20 +98,29 @@ class GuessingGame:
             else:
                 print(f"---------------------\nYou got it in {self.tries} tries\n---------------------")
                 self.run = False
-                self.pen.clear()
+                if self.type != "Computer":
+                    self.pen.clear()
                 return self.tries
 
 
+computer_player = True
+human_player = True
+numberOfSimulations = 1000
+
 # Run computer games
-computer = Player("Computer", 2)
-compStats = computer.playGames()
-# Print computer stats before continuing
-print(compStats)
+if computer_player:
+    computer = Player("Computer", numberOfSimulations)
+    compStats = computer.playGames()
+    # Print computer stats before continuing
+    print(compStats)
 # Run player games
-# print("\nHuman games begin: \n")
-human = Player("Human", 1)
+
 # print both human and computer stats
-print(human.playGames())
-print(compStats)
+if human_player:
+    print("\nHuman games begin: \n")
+    human = Player("Human", 1)
+    print(human.playGames())
+if computer_player:
+    print(compStats)
 
 turtle.done()
