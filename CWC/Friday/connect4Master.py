@@ -47,7 +47,6 @@ def placeMarker(event):
 
     checkWinner(board)
 
-# ROW IS NOT WORKING 100%
 def checkRows(board):
     for row in board:
         P1Score = 0
@@ -171,6 +170,7 @@ canvas = Canvas(tk, width=WIDTH, height=HEIGHT, background=BACKGROUND_COLOR)
 canvas.bind("<Button-1>", placeMarker)
 canvas.pack()
 
+# Draw the board GUI
 drawGrid()
 
 tk.mainloop()
