@@ -1,9 +1,12 @@
+
 class Contact:
     def __init__(self, name, number):
         self.name = name
         self.number = number
+
     def print_self(self):
         print(f"{self.name:<10} {self.number:<10}")
+
     def speak(self):
         print(f"Hello! This is {self.name}")
 
@@ -23,7 +26,25 @@ class Phonebook:
         for contact in self.contacts:
             if number == contact.number:
                 contact.speak()
-        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -41,7 +62,9 @@ phonebook.add_contact(andrew)
 print("\n")
 phonebook.show_contacts()
 
-call = input("Would you like to call someone?")
+call = input("Would you like to call someone? ")
 if call == "yes":
-    number = input("Please enter a phone number from the contact list")
+    number = input("Please enter a phone number from the contact list: ")
     phonebook.call(number)
+
+    

@@ -1,7 +1,7 @@
 # housePrinter.py
 import turtle
 pen = turtle.Turtle()
-
+turtle.bgcolor("black")
 # Define a function called drawSquare
 def drawSquare(size, color): # parameter, size == 50
     pen.speed(0)
@@ -70,5 +70,5 @@ def drawHouse(size, baseColor, roofColor, doorColor):
 
 #        size, basecolor, roofclr, doorColor
 drawHouse(200, "crimson", "teal", "saddle brown")
-
+pen.hideturtle()
 turtle.done()

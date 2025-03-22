@@ -17,7 +17,6 @@ def clear():
     calculation = ""
     text_result.delete(1.0, "end")
 
-
 # CONSTANTS
 WIDTH = 400
 HEIGHT = 300

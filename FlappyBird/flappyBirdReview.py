@@ -28,7 +28,6 @@ def checkLoss(obst):
     obstCoords = coords(obst)
     if coords[1] < 0 or coords[3] > canvasHeight:
         gameOver = True
-    elif
 
 class obstacle:
     def __init__(self, color):

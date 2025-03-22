@@ -1,8 +1,8 @@
 # fireworks
 import turtle
 import random
-
 pen = turtle.Turtle() # pull out the pen from the toolbox
+
 pen.speed(0)
 
 # Create black background
