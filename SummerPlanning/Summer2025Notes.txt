@@ -6,9 +6,9 @@ Subject: WHAT NEEDS TO BE DONE BEFORE SUMMER
     Using the now empty boxes, I need to format the Chromebook boxes (CB-01-A, ect.)
     After Chromebooks are done, it’s time to do a “passthrough” of each of the boxes we want to send out for summer
     This means I need to know the quantity of each device that I’ll need, so we can make sure to prepare that many boxes (maybe + a box or two?)
-    -
-    -
-    -
+    -Looking at my calculations of what we need, it leaned pretty heavily on the macbooks. 
+    -We need to format the macbooks/TP to be ready to work if the browser stuff doesn't work properly...
+
 
 2. INSTRUCTOR STUFF:
     Pressing: I need to quantify where everyone is, and look at which area of the Bay Area I am lacking instructors on. 
