@@ -8,6 +8,7 @@ import random
 
 
 
+
 '''
 but now we need a reason to have a high score, somehow using tkinter?
 Could still be clicker game, could be matching game, seeing as reading and writing to files is 
@@ -111,8 +112,9 @@ Learn how to get Pillow, it sounds like my computer has multiple python installa
 
 
 '''
-# cookieImg = tk.PhotoImage(PROJ_DIR / "cookie.jpg")
-# cookieLabel = tk.Label(window, image=cookieImg)
+cookieImg = tk.PhotoImage(file = PROJ_DIR / "cookie.jpg")
+cookieButton = tk.Button(window, image=cookieImg)
+cookieButton.grid(row=2,col=2)
 
 
 def buildHighScore():
