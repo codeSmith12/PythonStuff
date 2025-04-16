@@ -1,0 +1,153 @@
+
+
+Python 0:
+
+0.1:
+
+0.2:
+
+0.3:
+
+0.4:
+
+0.5:
+
+
+Python 1:
+
+1.1: Two Truths and a Lie - Output / print, input, variables (I'd like to replace)
+
+1.2: Fortune Teller - Output, input, conditionals, menu print (I'd like to replace )
+
+1.3: Dice Rolling - Libraries, random, fstring, Loops (I'd like to replace...)
+
+1.4: Name Generator - Lists, random, loops(generate x names...), add items to end of list (Maybe just modify)
+
+1.5: Time Games - Time & random library, take average of times (Keeper-ish)
+
+Python 2:
+
+2.1: Functions - Functions with parameters, Challenge is to create a calculator... this should just be the lesson.
+
+2.2: Chatbot Part 1 - Reviews Calculator code, while loop, Dictionary, chat bot calls calculator Functions
+
+2.3: String Methods - .lower, .strip, if X in Y: (Overall I think we could use a different lesson..)
+
+2.4: To-Do List - Push and Pop, List (It's a fine lesson)
+
+2.5: Wordle - input, conditional, lists, random (Fine project)
+
+Python 3:
+
+3.1: Clicker Game - tkinter library, how to make window, Labels, tkinter pack, Button, variables (Good lesson)
+
+3.2: Calculator - eval, Text widget, button commands, lambda, functions with parameters, .grid (Good lesson, little hard to finish, but probably doable)
+
+3.3: Tile Matching - Walk through project without OOP, then run into problems and turn to OOP (good for understanding but takes a long time), booleans, Objects, constructors and member variables / fxn, Encapsulation, binding functions to events, .grid, lists (Good lesson, but takes two sessions generally)
+
+3.4: Type Racer - Objects, member variables and functions, tkinter Canvas (Good lesson, can probably be done in an hour..)
+
+3.5: Pong Game - Canvas, Classes / Objects, canvas.move, Ball bounce, paddle class, main game loop, Intersection / collision in canvas objects, 
+
+
+
+
+Python - Brian:
+
+Quantity of lessons:
+10
+2 units:
+OOP first
+ - File IO
+GUI Second
+ - Tkinter
+
+Concepts: 
+Files I/O
+OOP basics
+GUI building
+tkinter, obviously
+
+
+Brianstorm(;P) project ideas 
+OOP
+(not sure where to put this: public vs private, getters and setters)
+Also - could talk about making Main an objects instead of just coding in main (if that makes sense)
+1.1: (One object, made multiple times, public access of their variables)
+Objectify Person - Take an entity you know and describe it in code.
+Learn about constructors, Encapsulation and building multiple objects
+member variables, print(f"Hello my name is {person1.name}") type stuff, access public variables
+Compare Object to blueprint for a house. I can make many houses with the same blueprint
+
+
+1.2: (Build many objects, place in list, encapsulate list and add functions) (object contains multiple objects)
+Phonebook?
+Contact object has member variables (name, phonenumber), but also functions (greet)
+person1.greet() -> greet(): print(f"Hello this is {self.name}")
+
+Phonebook contains list of contact objects (more encapsulation)
+OR AN INVENTORY FOR A GAME, kids might connect with this project more...
+
+1.3: File I/O, maybe a project for saving game data ?
+    Could start off with a sample project, like tic tac toe, then write and read from the File
+    to keep track of wins / loses?
+    Or Top score?
+
+
+
+1.4: (Objects that interact with each other, but maybe not contained by the other...)
+
+    Uses files (probably precreated) to read data and build objects with them.
+    Maybe we have a dictionary file that has words and definitions? Idk this can be done with 2 lists, not great 
+    Precreated program that has object definitions, but students need to figure out how to 
+    read from the files to build two objects.
+    If the objects are built successfully, then maybe a gameloop runs where the two objects interact
+    This might be Enemy vs Player type of project.
+
+
+1.5: 
+Idea 1: Many objects, all interacting, Castles and Creatures type thing. But how can we accomplish in 1 hour??
+Idea 2: Something that culminates all lessons so far. Would be nice to have 2 hours. Maybe instead of presentation?
+    This means Reading Files to create objects, it means writing to files to save progress...
+
+
+
+
+
+
+GUI:
+2.1:
+
+2.2:
+
+2.3:
+
+2.4:
+
+2.5:
+
+
+
+
+---------------------------
+
+Brian Storming again...
+It sounds like Servane prefers when both the OOP and GUI level up together.
+While I agree that makes the projects more visual and such, I just wonder if taking the time to build GUIs will detract from the OOP lessons.
+This means that we'd need to make each lesson smaller in scale, if we are building GUIs....
+
+A different approach is to build them in isolation,
+or the original idea was to Learn OOP and then use it as we also learn GUI.
+
+If we entertain the idea of building GUI and OOP....
+
+
+Lesson X: Read from a file to build objects.
+Lesson X+1: Use previous project, but build GUI to display eaech object that is read in from the file. 
+
+^^^ Could use this format for most / all of the lessons?
+Build something text based, then next project build a GUI for it.
+
+This could all still move towards a final big result, or we could keep them to individual / paired lessons
+Or it could be the format for the first few projects...
+
