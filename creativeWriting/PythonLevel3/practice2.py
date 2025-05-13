@@ -22,8 +22,6 @@ class Person:
     def toStr(self):
         return f"Name:{self.name}\nAge:{self.age}"
 
-'''
-'''
 class Entry:
     def __init__(self, person):
         self.person = person

@@ -1,21 +1,25 @@
 import tkinter as tk
 from pathlib import Path
 import random
+from PIL import Image, ImageTk
+import time
 
 
-
-
-
-
-
+def clicked(event):
+    print("Clicked!!")
+    scoreLabel.config(text=f"Score: {score}")
+    increment() 
+    ''')
+    this was to enlarge cookie when clicked, come back to this?
+    cookieImg.resize((WIDTH//3, HEIGHT//3))
+    cookieLabel.config(image=cookieImg)
+    time.sleep(.5)
+    cookieImg.resize((WIDTH//5, HEIGHT//5))
+    cookieLabel.config(image=cookieImg)
+    '''
 
 '''
-but now we need a reason to have a high score, somehow using tkinter?
-Could still be clicker game, could be matching game, seeing as reading and writing to files is 
-going to always be handled..
 
-Clicker game would allow for continuation by reading files. 
-It's a simple enough game to make / animate using tkinter's widgets
 
 Idea to incorporate progress bar,
 click until bar is complete, then you gain something in the game
@@ -36,11 +40,13 @@ Right: Upgrades, each entry is greyed out and red text until you click enough,
 All actions have sounds of course...
 
 Make a hitbox around the dimensions of the label which holds an image...
-
-
-
 '''
 
+def buyClicker(events):
+    global score
+    if score >= clickerCost:
+        score -= clickerCost
+        # give benefit ...
 
 colors = ["red","green","blue","yellow","purple"]
 
@@ -83,7 +89,6 @@ for line in f.readlines():
 # Sort list of PlayerScore objects by their scores so we can easily grab the top few
 players.sort(key=lambda x: x.score, reverse=True) # Reverse for decending values
 
-
 # Constants
 WIDTH = 1200
 HEIGHT = 800
@@ -97,9 +102,9 @@ FONT = ("FixedSys", 20)
 window = tk.Tk()
 window.geometry(f"{WIDTH}x{HEIGHT}")
 
-for row in range(3):
-    for col in range(3):
-        tk.Label(window, bg=random.choice(colors), text="1", font=FONT).grid(row=row, column=col, sticky="EW")
+# for row in range(3):
+#     for col in range(3):
+#         tk.Label(window, bg=random.choice(colors), text="1", font=FONT).grid(row=row, column=col, sticky="EW")
 
 entries = []
 
@@ -112,9 +117,26 @@ Learn how to get Pillow, it sounds like my computer has multiple python installa
 
 
 '''
-cookieImg = tk.PhotoImage(file = PROJ_DIR / "cookie.jpg")
-cookieButton = tk.Button(window, image=cookieImg)
-cookieButton.grid(row=2,col=2)
+# Build cookie stuff
+global cookieImg, cookieLabel
+cookieImg = Image.open(PROJ_DIR / "cookie.jpg")
+cookieImg = cookieImg.resize((WIDTH//5,WIDTH//5))
+img = ImageTk.PhotoImage(cookieImg)
+cookieLabel = tk.Label(window, image=img)
+cookieLabel.bind("<Button-1>", clicked)
+cookieLabel.grid(row=2, column=2)
+
+# Build Score
+global score, scoreLabel
+score = 0
+scoreLabel = tk.Label(window, text=f"Score: {score}", font=FONT)
+scoreLabel.grid(row=1, column=2)
+
+#??
+def increment():
+    global score
+    score+=1
+    scoreLabel.config(text=f"Score: {score}")
 
 
 def buildHighScore():
