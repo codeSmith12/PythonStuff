@@ -4,20 +4,23 @@ from pathlib import Path # This was added to get the containing folder of our sc
 
 
 
+'''
+Homework - Not really sure for this one..
+They learned how to sort using an objects variable.
+
+Could give them some stuff to sort, alphabetically, numerically
+
+Could be sort the entries alphabetically by name instead of score.
+
+Could be a separate idea entirely, more building of GUI stuff to prepare them for the next lesson?
+
+
 
 
 '''
-So we can read into files, we can build objects and can build simple guis. Now what?
-Start building towards something?
 
-Maybe take 2 files, heroes and enemies, and read them in,
-or build with canvas ?
 
-What kind of game can I make with this?
-Castles and Creatures, but with GUI?
-
-Some kind of puzzle game ? The matching game ?
-
+'''
 THIS COULD BE THAT WE READ IN NAMES AND HIGH SCORES,
 THEN WE BUILD AN ENTRY FOR EACH OF THE TOP X !!!!!!
 
@@ -36,7 +39,6 @@ click until bar is complete, then you gain something in the game
 Maybe that's an extra click per or maybe you just get a fixed amount of cash?
 or just when you make purchases a bar pops up ?
 Can we figure out how to do extra alert windows?
-
 
 
 Show kids different attributes to change, like font colors, families
@@ -66,7 +68,6 @@ class Entry:
 PROJ_DIR = Path(__file__).parent
 # Using this variable allows us to easily change the file we want to read from
 FILE_NAME = "persons2.txt"
-
 
 # Create person objects
 f = open(f"{PROJ_DIR}/{FILE_NAME}", "r")

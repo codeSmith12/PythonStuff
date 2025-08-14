@@ -26,7 +26,6 @@ class Paddle:
         else:
             canvas.itemconfig(botScore, text=self.score)
             
-
     def move(self, event):
         if self.isPlayer:
             if event.keysym == "w":
@@ -144,7 +143,7 @@ myFont = ('Terminal 50 bold')
 # Create text objects for scores
 playerScore = canvas.create_text(WIDTH//4, HEIGHT//20, text="0", font=myFont)
 # Create text objects for scores
-botScore = canvas.create_text(WIDTH*3//4, HEIGHT//20, text="0", font=myFont)
+botScore = canvas.create_text(WIDTH*3//4, HEIGHT//20, text="0", font=myFont, fill="white")
 
 # Draw separating line
 canvas.create_line(WIDTH/2, 0, WIDTH/2, HEIGHT, width=LINE_WIDTH, fill="white")

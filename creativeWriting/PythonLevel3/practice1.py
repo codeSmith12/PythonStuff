@@ -2,6 +2,41 @@ import tkinter as tk
 
 # Define what a person is in our program
 
+
+'''
+Homework:
+Using classes, objectify 3-5 things around your house. You can use print statements to describe the actions these items perform.
+For example:
+
+class Lamp:
+    def __init__(self):
+        self.lightbulb = "32W SmartLight"
+        self.is_on = False
+    def turn_on(self):
+        self.is_on = True
+        print("Light is turning on")
+    def turn_off(self):
+        self.is_on = False
+        print("Light is turning off")
+
+class Remote:
+    def __init__(self):
+        self.buttons = [1,2,3,4,5,6,7,8,9]
+    def change_channel(self, channel):
+        print("Changing channel to ", channel)
+        
+
+class Phone:
+    def __init__(self):
+        self.buttons = [0,1,2,3,4,5,6,7,8,9]
+    def call(self, number):
+        print("Calling phone number", number)
+    
+
+'''
+
+
+
 '''
 I think lesson 1 SHOULD have toStr command, 
 because if I let them create more than a person class
@@ -26,7 +61,6 @@ class Entry:
         self.person = person
         self.label = tk.Label(window, text=person.toStr())
         self.label.pack()
-
 
 # Create person objects
 person1 = Person("Brian", 32)

@@ -122,6 +122,7 @@ def increment():
     score+= multiplier
     scoreLabel.config(text=f"Score: {score}")
 
+# Put these in but should have waited for practice 7 file. Maybe remove when cleaning up files.
 def buyPassive(events):
     print("Passive purchased")
     
@@ -142,12 +143,10 @@ upgradeFrame = tk.Frame(window)
 upgradeFrame.grid(row=2,column=3)
 
 clickerUpgrade = tk.Button(upgradeFrame, text=f"Buy Multiplier for {clickerCost}", font=FONT)
-clickerUpgrade.bind("<Button-1>", buyClicker)
 clickerUpgrade.pack()
 
 passiveCost = 100
 passiveUpgrade = tk.Button(upgradeFrame, text=f"Buy Passive Cookies for {passiveCost}", font=FONT)
-passiveUpgrade.bind("<Button-1>", buyPassive)
 passiveUpgrade.pack()
 
 tickCost = 1000

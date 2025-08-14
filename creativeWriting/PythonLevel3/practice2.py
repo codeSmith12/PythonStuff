@@ -3,6 +3,28 @@ from tkinter import ttk
 
 
 
+'''
+    Homework:
+    Should focus on building GUI this time, maybe outside of the class ideas
+    Students should make a ToDo or Shopping list.
+    Students are encouraged to beautify their labels using fg and bg color attributes
+    Each item in the list will be a tk.Label.
+    
+    Reminder:
+    WIDTH = 200
+    HEIGHT = 200
+    window = tk.Tk()
+    window.geometry(f"{WIDTH}x{HEIGHT}")
+    apples = tk.Label(window, text="5x apples")
+    apples.pack()
+    oranges = tk.Label(window, text="2x oranges")
+    oranges.pack()
+
+    ... ect
+
+'''
+
+
 
 '''
 

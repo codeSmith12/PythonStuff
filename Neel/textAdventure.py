@@ -11,7 +11,7 @@ scroll = True # <--
 def player1_respond():
     p1 = input()
 
-screen.onkey(player1_respond, "Enter")
+# screen.onkey(player1_respond, "Enter")
 
 
 

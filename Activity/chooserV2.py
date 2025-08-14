@@ -1,8 +1,8 @@
 import random,time
 # AUTO REMOVE CHOSEN ITEM, LOOP ONCE ENTER IS PRESSED
-presenters = ["Group 1", "Group 2", "Group 3", "Group 4"]
+presenters = ["Loukas", "Michael", "Tristan", "Pheobe", "Mark"]
 from pathlib import Path
-from playsound import playsound
+# from playsound import playsound
 
 SCRIPT_DIR = Path(__file__).parent
 TIC = SCRIPT_DIR / 'TIC3.wav'
@@ -21,7 +21,7 @@ while len(presenters) > 0:
             time.sleep(i/SPEED_FACTOR)
             chosenOne = random.choice(presenters)
         print(f"\n{chosenOne}")
-        playsound(str(TIC))
+        # playsound(str(TIC))
         
     
     print(f"\nThe next presenter will be {chosenOne}!!!")
