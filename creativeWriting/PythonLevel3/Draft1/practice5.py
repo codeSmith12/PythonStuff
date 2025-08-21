@@ -5,42 +5,23 @@ from PIL import Image, ImageTk
 import time
 
 
+
+
+
+
+'''
+Homework idea:
+Students have learned how to add images to the window, and were introduced to the grid.
+Homework might be to make a collage of a topic of their choice.
+They will need to gather 9(?) pictures, and display them in a window.
+They will use lots of grid, and will likely need to resize images. Good practice!
+
+'''
+
 def clicked(event):
     print("Clicked!!")
     scoreLabel.config(text=f"Score: {score}")
     increment() 
-    ''')
-    this was to enlarge cookie when clicked, come back to this?
-    cookieImg.resize((WIDTH//3, HEIGHT//3))
-    cookieLabel.config(image=cookieImg)
-    time.sleep(.5)
-    cookieImg.resize((WIDTH//5, HEIGHT//5))
-    cookieLabel.config(image=cookieImg)
-    '''
-
-'''
-
-
-Idea to incorporate progress bar,
-click until bar is complete, then you gain something in the game
-Maybe that's an extra click per or maybe you just get a fixed amount of cash?
-or just when you make purchases a bar pops up ?
-Can we figure out how to do extra alert windows?
-
-
-IDEALLY WE WILL NEED TO BE ABLE TO LOG IN, maybe just take a name, no password stuff, unless we have lots of time...
-
-
-
-Components of cookie clicker
-Left: image of cookie to click on.... expands / jiggles when hovered
-Mid: Cartoonish displays of the upgrades you have...
-Right: Upgrades, each entry is greyed out and red text until you click enough,
-        now it lights up and text green 
-All actions have sounds of course...
-
-Make a hitbox around the dimensions of the label which holds an image...
-'''
 
 def buyClicker(events):
     global score
@@ -49,8 +30,6 @@ def buyClicker(events):
         # give benefit ...
 
 colors = ["red","green","blue","yellow","purple"]
-
-
 
 class PlayerScore:
     def __init__(self, name,score):
@@ -108,15 +87,6 @@ window.geometry(f"{WIDTH}x{HEIGHT}")
 
 entries = []
 
-
-'''
-Build GUI right here dude...
-Need grid(col =1-3
-
-Learn how to get Pillow, it sounds like my computer has multiple python installations...
-
-
-'''
 # Build cookie stuff
 global cookieImg, cookieLabel
 cookieImg = Image.open(PROJ_DIR / "cookie.jpg")
@@ -149,13 +119,6 @@ def buildHighScore():
     for i in range(NUM_TOP_SCORES):
         entries.append(Entry(players[i]))
 
-
-# buildHighScore()
-'''
-
-
-'''
-    
 
 # Keep this at the bottom of the program,
 # This command keeps the window open

@@ -13,22 +13,9 @@ def clicked(event):
     update_display()
 
 '''
-
-Other ideas for games... 
-
-For the section, we want to create our upgrades.
-
-Different ideas for upgrades:
-
-x clicks per second
-1 click per second/X
-X clicks per ... click on cookie
-
-critical click - can purchase "luck" stat which if proc'd will add multiplier * 100 or 1000 to click
-or "On Fire" every click for a period of 5 seconds is worth 50x, this would probably be quick exciting
-Another thing is this could be proc'd when a random button spawns in the grid, if clicked in 1 second then On Fire proc's
-
-Could add sounds - not an upgrade but design feature.. 
+This lesson makes a large jump in the completion of the GUI. I think it's unlikely students will have enough time to finish
+Their homework could be to finish the lay out.
+If they did end up finishing, I think more practice with frames is a good idea. 
 
 
 '''

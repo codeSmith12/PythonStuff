@@ -2,7 +2,7 @@ import tkinter as tk
 
 # Define what a person is in our program
 
-
+# Homework
 '''
 Homework:
 Using classes, objectify 3-5 things around your house. You can use print statements to describe the actions these items perform.
@@ -12,6 +12,7 @@ class Lamp:
     def __init__(self):
         self.lightbulb = "32W SmartLight"
         self.is_on = False
+        self.wifi_connected = true
     def turn_on(self):
         self.is_on = True
         print("Light is turning on")
@@ -36,7 +37,6 @@ class Phone:
 '''
 
 
-
 '''
 I think lesson 1 SHOULD have toStr command, 
 because if I let them create more than a person class
@@ -51,17 +51,6 @@ class Person:
     def toStr(self):
         return f"Name:{self.name}\nAge:{self.age}"
 
-'''
-By the time we make Entry, we are on second session (GUI2.1)
-but it feels like over kill. Will probably add to confusion of GUI.
-We could leave Entry out, and just loosely add each person to the window
-'''
-class Entry:
-    def __init__(self, person):
-        self.person = person
-        self.label = tk.Label(window, text=person.toStr())
-        self.label.pack()
-
 # Create person objects
 person1 = Person("Brian", 32)
 person2 = Person("Jake", 29)
@@ -74,11 +63,7 @@ people = [person1, person2, person3, person4]
 # Build Window
 window = tk.Tk()
 
-entries = []
 
-# Simultaneously creates entries on window, and stores them in a list. Not necessary for now, but maybe later?
-for person in people:
-    entries.append(Entry(person))
     
 
 # Keep this at the bottom of the program,

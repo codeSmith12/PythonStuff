@@ -56,7 +56,7 @@ PROJ_DIR = Path(__file__).parent
 FILE_NAME = "persons2.txt"
 
 
-# Create person objects
+# Open the file in read mode using a carefully construction path string
 f = open(f"{PROJ_DIR}/{FILE_NAME}", "r")
 
 # Group objects together
@@ -77,8 +77,8 @@ people = []
 # Create a person object with the array with 2 items, using indexes
 # Add object into list so our window can build each entry, as it has in the past
 for line in f.readlines():
-    stripped = line.split(",")
-    person = Person(stripped[0], stripped[1])
+    splitStr = line.split(",")
+    person = Person(splitStr[0], splitStr[1])
     people.append(person)
     
 

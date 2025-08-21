@@ -5,18 +5,8 @@ from PIL import Image, ImageTk
 import time
 
 '''
-
-This file will focus on the saving and loading of data.
-
-We could maybe stop with all of the globabal variables and make a Game class, that has a Player class inside??
-The ultimate goal is that we want to be able to save and load the data using a file called playerData.txt
-I think the idea of stringifying the player object is probably best for outputting to a file..
-This also means that when reading the players data we read into the player object of course.
-
-OR
-
-We keep all of the code in the main program, and when we do save or load, we have to pack all the data into the player object and output it to the file..
-I just feel like this approach makes it unnessesary to use objects. Might as well just output to the file.
+This part focuses on refactoring the code. For a while, we've had a lot of loose code. This isn't ideal and is not the OOP way of doing things.
+For the class, we will be shuffling things around and encapsulating all of our data into a big game class
 
 ____________________
 

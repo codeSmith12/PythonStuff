@@ -1,5 +1,4 @@
 import tkinter as tk
-from tkinter import ttk
 
 
 
@@ -28,6 +27,11 @@ from tkinter import ttk
 
 '''
 
+This lesson needs more content. We should explore more of what Tkinter has to offer in this lesson.
+
+
+
+
 What does this build on?
 
 Initially, I think that we should beautify the entries. 
@@ -46,13 +50,20 @@ class Person:
 
 class Entry:
     def __init__(self, person):
-        self.person = person
-        self.label = tk.Label(window, text=person.toStr(), bg="black", fg="white",height=5, width=WIDTH-2)
+        self.person = person # If we have enough options for a widget, we can make new lines for legibility
+        self.label = tk.Label(window, 
+                              text=person.toStr(), 
+                              bg="black", 
+                              fg="white", 
+                              relief= tk.RAISED, 
+                              cursor="heart",
+                              height=5, 
+                              width=WIDTH-2)
 
         # Create empty label for spacer...?
-        tk.Label(window, text="").pack()
+        # tk.Label(window, text="").pack()
         self.label.pack()
-        tk.Label(window, text="").pack()
+        # tk.Label(window, text="").pack()
 
 
 

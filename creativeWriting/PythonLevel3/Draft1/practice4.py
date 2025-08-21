@@ -14,37 +14,9 @@ Could be sort the entries alphabetically by name instead of score.
 
 Could be a separate idea entirely, more building of GUI stuff to prepare them for the next lesson?
 
-
-
-
 '''
 
-
 '''
-THIS COULD BE THAT WE READ IN NAMES AND HIGH SCORES,
-THEN WE BUILD AN ENTRY FOR EACH OF THE TOP X !!!!!!
-
-This gives purpose to everything we've made so far
-Can maybe spend more time beautifying our gui, as this is more permanent.
-
-but now we need a reason to have a high score, somehow using tkinter?
-Could still be clicker game, could be matching game, seeing as reading and writing to files is 
-going to always be handled..
-
-Clicker game would allow for continuation by reading files. 
-It's a simple enough game to make / animate using tkinter's widgets
-
-Idea to incorporate progress bar,
-click until bar is complete, then you gain something in the game
-Maybe that's an extra click per or maybe you just get a fixed amount of cash?
-or just when you make purchases a bar pops up ?
-Can we figure out how to do extra alert windows?
-
-
-Show kids different attributes to change, like font colors, families
-Give them time to find things they like
-
-
 
 '''
 class PlayerScore:
