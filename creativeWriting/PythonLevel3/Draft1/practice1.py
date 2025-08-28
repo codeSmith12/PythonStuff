@@ -1,5 +1,3 @@
-import tkinter as tk
-
 # Define what a person is in our program
 
 # Homework
@@ -38,16 +36,15 @@ class Phone:
 
 
 '''
-I think lesson 1 SHOULD have toStr command, 
-because if I let them create more than a person class
-Each object will need to know how to return a string for GUI 2.1 or so
-But we can start by just printing variables (person1.name)
+
 
 '''
 class Person:
     def __init__(self, name,age):
         self.name = name
         self.age = age
+    def greet(self):
+        print(f"Hello, my name is {self.name} and I am {self.age} years old!")
     def toStr(self):
         return f"Name:{self.name}\nAge:{self.age}"
 
@@ -60,12 +57,5 @@ person4 = Person("Ian", 34)
 # Group objects together
 people = [person1, person2, person3, person4]
 
-# Build Window
-window = tk.Tk()
-
-
-    
-
-# Keep this at the bottom of the program,
-# This command keeps the window open
-window.mainloop()
+for person in people:
+    person.greet()

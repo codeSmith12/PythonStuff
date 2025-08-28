@@ -1,5 +1,5 @@
 '''
-Python Level 3 - Lesson 5 - Click-o-clock (cringe)
+Python Level 3 - Lesson 8 - Objectifying our Game
 
 Objectives:
    

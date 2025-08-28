@@ -44,17 +44,17 @@ pen.speed(0)
 
 
 # Number of V's per branch
-numVs = 12
+numVs = 5
 # Length of each V
-vSize = 200
+vSize =31
 # Number of main branches in the snowflake
-branches = 16
+branches = 25
 # Length of each main branch
-size = 200
+size = 10
 # Thickness
 penSize = 4
 # Color...
-penColor = "cyan"
+penColor ="aqua"
 
 
 
