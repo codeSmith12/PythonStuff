@@ -3,7 +3,15 @@ from pathlib import Path
 import random
 from PIL import Image, ImageTk
 import time
+'''
+HW:
+Cycle through cookie images as score increases
+Ask them to figure it out :)
 
+
+
+
+'''
 def update_display():
     scoreLabel.config(text=f"Score: {score}")
 

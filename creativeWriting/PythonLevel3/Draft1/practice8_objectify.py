@@ -4,6 +4,18 @@ import random
 from PIL import Image, ImageTk
 import time
 
+
+
+
+'''
+HW on dictionary
+
+
+'''
+
+
+
+
 '''
 This part focuses on refactoring the code. For a while, we've had a lot of loose code. This isn't ideal and is not the OOP way of doing things.
 For the class, we will be shuffling things around and encapsulating all of our data into a big game class
@@ -48,6 +60,7 @@ class ClickerGame:
         self.window = tk.Tk()
         self.window.title("Cookie Clicker") # added this Practice7, should have been added a long time ago
         self.window.geometry(f"{WIDTH}x{HEIGHT}")
+        # Must use a Python Library (pathlib) to safely get the current directory the program is running in
         PROJ_DIR = Path(__file__).parent
         # Using this variable allows us to easily change the file we want to read from
         FILE_NAME = "persons2.txt"
