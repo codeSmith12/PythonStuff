@@ -25,9 +25,6 @@ def clicked(event):
 WIDTH = 1200
 HEIGHT = 800
 
-# How many player scores will we list on our board
-NUM_TOP_SCORES = 9 # chose 9 because thats how many fit on the window..
-
 FONT = ("FixedSys", 20)
 
 # Build Window
@@ -36,14 +33,17 @@ window.geometry(f"{WIDTH}x{HEIGHT}")
 
 PROJ_DIR = Path(__file__).parent
 
-# Build cookie stuff
+# Build Cookie Image
 global cookieImg, cookieLabel
 cookieImg = Image.open(PROJ_DIR / "cookie.jpg")
 cookieImg = cookieImg.resize((WIDTH//5,WIDTH//5))
 img = ImageTk.PhotoImage(cookieImg)
-cookieLabel = tk.Label(window, image=img)
-cookieLabel.bind("<Button-1>", clicked)
-cookieLabel.grid(row=2, column=2)
+
+# Create button and add image
+cookieBtn = tk.Button(window, image=img)
+cookieBtn.bind()
+cookieBtn.bind("<Button-1>", clicked)
+cookieBtn.grid(row=2, column=2)
 
 # Build Score
 global score, scoreLabel
@@ -51,7 +51,6 @@ score = 0
 scoreLabel = tk.Label(window, text=f"Score: {score}", font=FONT)
 scoreLabel.grid(row=1, column=2)
 
-#??
 def increment():
     global score
     score+=1

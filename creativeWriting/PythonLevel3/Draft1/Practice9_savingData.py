@@ -8,23 +8,6 @@ import time, json
 
 This file will focus on the saving and loading of data.
 
-We could maybe stop with all of the globabal variables and make a Game class, that has a Player class inside??
-The ultimate goal is that we want to be able to save and load the data using a file called playerData.txt
-I think the idea of stringifying the player object is probably best for outputting to a file..
-This also means that when reading the players data we read into the player object of course.
-
-OR
-
-We keep all of the code in the main program, and when we do save or load, we have to pack all the data into the player object and output it to the file..
-I just feel like this approach makes it unnessesary to use objects. Might as well just output to the file.
-
-____________________
-
-Another note, do we want playerData file to hold only 1 players data or do we want to have multiple?
-
-If we have multiple, we'd have to add some kind of login system. It would also allow us to continue the idea of having a high score panel
-If we have 1, there's a lot less work but it also makes the high score part not important... Maybe they use it for their own game.
-
 '''
 # Create the skeleton of your new game object
 class ClickerGame:
@@ -247,7 +230,7 @@ class ClickerGame:
             for line in outputFile.readlines():
                 # Convert the line (str) into a dictionary
                 if line != "\n": # Make sure the line isn't empty
-                    curEntry = json.loads(line)
+                    curEntry = json.loads(line) # Converts a string into a dictionary
                     # Check if the name of the entry matches the user name that was entered
                     if curEntry["Name"] == self.accountEntry.get():
                         playerFound = True
@@ -286,9 +269,10 @@ class ClickerGame:
                     if curEntry["Name"] == self.accountEntry.get():
                         print("Found")
                         playerFound = True
-                        playerData = curEntry
-
                         # Update the players data
+                        playerData = curEntry
+                    else:
+                        print(f"{self.accountEntry.get()} not found")
         inputFile.close()        
         # If we found the player, store values found in file in our main objects variables
         if playerFound:

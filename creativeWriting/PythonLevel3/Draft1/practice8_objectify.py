@@ -63,10 +63,6 @@ class ClickerGame:
         # Must use a Python Library (pathlib) to safely get the current directory the program is running in
         PROJ_DIR = Path(__file__).parent
         # Using this variable allows us to easily change the file we want to read from
-        FILE_NAME = "persons2.txt"
-
-        # Create person objects
-        # f = open(f"{PROJ_DIR}/{FILE_NAME}", "r")
 
         # Build cookie stuff, not using self.X because these member variables don't need to be referenced after they've been built
         cookieImg = Image.open(PROJ_DIR / "cookie.jpg")

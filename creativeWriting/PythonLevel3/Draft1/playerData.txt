@@ -1,2 +1,2 @@
-{"Name": "sevnm", "Score": 31, "Click Multiplier": 1, "Passive Multiplier": 0, "Passive Active": false, "Tick Speed": 1, "Luck": 0, "Critical Multiplier": 20}
+{"Name": "sevnm", "Score": 999627156, "Click Multiplier": 24, "Passive Multiplier": 72, "Passive Active": true, "Tick Speed": 150, "Luck": 102, "Critical Multiplier": 260}
 {"Name": "test2", "Score": 100000, "Click Multiplier": 1, "Passive Multiplier": 0, "Passive Active": false, "Tick Speed": 1, "Luck": 0, "Critical Multiplier": 20}
